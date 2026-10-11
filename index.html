@@ -33,6 +33,8 @@
   .body{padding:1rem 1.15rem 1.15rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
   .body h3{margin:0;font-size:1.05rem}
   .body p{margin:0 0 .5rem;font-size:.93rem}
+  .v{font-size:.75rem;font-weight:600;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:.05rem .4rem;margin-left:.35rem;vertical-align:2px}
+  .v:empty{display:none}
   .tag{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
   .links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto}
   .btn{display:inline-block;padding:.5rem .8rem;border-radius:8px;text-decoration:none;
@@ -109,7 +111,7 @@
       <a class="art" href="https://novas-mv.github.io/weave-gradients/" aria-label="Weave Gradients guide"><img src="https://novas-mv.github.io/weave-gradients/card.jpg" alt="" loading="lazy"></a>
       <div class="body">
         <span class="tag">Tool · Figma plugin</span>
-        <h3>Weave Gradients</h3>
+        <h3>Weave Gradients <span class="v" data-version="https://novas-mv.github.io/weave-gradients/version.json"></span></h3>
         <p>Aurora-style gradient weaves with fabric-like folds, at print resolution.</p>
         <div class="links">
           <a class="btn primary" href="https://novas-mv.github.io/weave-gradients/studio/">Studio</a>
@@ -146,6 +148,10 @@ const fit = () => document.querySelectorAll('.art iframe').forEach(f => {
   f.style.transform = `scale(${f.parentElement.clientWidth / 1280})`;
 });
 addEventListener('resize', fit); fit();
+/* live version of each tool, straight from its published site */
+document.querySelectorAll('[data-version]').forEach(el =>
+  fetch(el.dataset.version + '?t=' + Date.now(), { cache:'no-store' }).then(r => r.json())
+    .then(v => { el.textContent = 'v' + v.version; el.title = 'Live since ' + v.date; }).catch(() => {}));
 </script>
 <script type="module">
 /* Line Shader's card art is drawn by its own published engine. If it can't load, the card stays plain. */
