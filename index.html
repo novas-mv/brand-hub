@@ -1,0 +1,161 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Brand hub — Novas</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Every published piece of branding work in one place: design systems, brand guides, concepts and design tools.">
+<style>
+  :root{
+    --bg:#0B1020; --panel:#121a2e; --line:#223049;
+    --ink:#e9edf4; --dim:#93a1b8; --accent:#f87049; --accent2:#14e0d8;
+    --r:12px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:72rem;margin:0 auto;padding:clamp(1.5rem,5vw,4rem) 1.25rem 5rem}
+  h1{font-size:clamp(2rem,6vw,2.8rem);line-height:1.1;margin:0 0 .5rem;letter-spacing:-.02em}
+  h2{font-size:1.25rem;margin:3rem 0 .25rem;letter-spacing:-.01em}
+  h2 + p{margin-top:0}
+  p{color:var(--dim);margin:.5rem 0 1rem}
+  .lede{font-size:1.15rem;color:#bfcada;max-width:36rem}
+  a{color:var(--accent)}
+
+  .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));margin:1rem 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+        display:flex;flex-direction:column}
+  .art{position:relative;aspect-ratio:16/10;background:#0e1527;overflow:hidden;border-bottom:1px solid var(--line);display:block}
+  .art img,.art svg{display:block;width:100%;height:100%;object-fit:cover}
+  /* live preview: render the real page at desktop width, scale it down */
+  .art iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;
+              transform-origin:0 0;pointer-events:none}
+  .art::after{content:"";position:absolute;inset:0}           /* whole thumbnail is a link */
+  .body{padding:1rem 1.15rem 1.15rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+  .body h3{margin:0;font-size:1.05rem}
+  .body p{margin:0 0 .5rem;font-size:.93rem}
+  .tag{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
+  .links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto}
+  .btn{display:inline-block;padding:.5rem .8rem;border-radius:8px;text-decoration:none;
+       font-weight:600;font-size:.86rem;border:1px solid var(--line);color:var(--ink)}
+  .btn.primary{background:var(--accent);border-color:transparent;color:#14100e}
+  .btn:hover{filter:brightness(1.1)}
+
+  footer{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--line);color:#6e7d95;font-size:.88rem}
+</style>
+
+<div class="wrap">
+  <h1>Brand hub</h1>
+  <p class="lede">Every published piece of branding work in one place — design systems,
+     brand guides, concepts, and the tools that make the artwork.</p>
+
+  <h2>VARA Expo 2026</h2>
+  <p>Maldives National Skills &amp; Career Expo.</p>
+  <div class="grid">
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/vara-expo-preview/design-system.html" aria-label="Open the design system"><iframe loading="lazy" tabindex="-1" title="Design system preview" src="https://novas-mv.github.io/vara-expo-preview/design-system.html"></iframe></a>
+      <div class="body">
+        <span class="tag">Design system</span>
+        <h3>Design system</h3>
+        <p>Typography, colour, tokens and components — fonts included.</p>
+        <div class="links"><a class="btn primary" href="https://novas-mv.github.io/vara-expo-preview/design-system.html">Open</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/vara-expo-preview/templates.html" aria-label="Open the templates"><iframe loading="lazy" tabindex="-1" title="Templates preview" src="https://novas-mv.github.io/vara-expo-preview/templates.html"></iframe></a>
+      <div class="body">
+        <span class="tag">Templates</span>
+        <h3>Page templates</h3>
+        <p>Every site template, rendered.</p>
+        <div class="links"><a class="btn primary" href="https://novas-mv.github.io/vara-expo-preview/templates.html">Open</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/vara-expo-preview/" aria-label="Open the site preview"><iframe loading="lazy" tabindex="-1" title="Site preview" src="https://novas-mv.github.io/vara-expo-preview/"></iframe></a>
+      <div class="body">
+        <span class="tag">Website</span>
+        <h3>Site preview</h3>
+        <p>The public website as designed.</p>
+        <div class="links"><a class="btn primary" href="https://novas-mv.github.io/vara-expo-preview/">Open</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/vara-expo-concept/" aria-label="Open the landing concepts"><iframe loading="lazy" tabindex="-1" title="Landing concepts preview" src="https://novas-mv.github.io/vara-expo-concept/"></iframe></a>
+      <div class="body">
+        <span class="tag">Concepts</span>
+        <h3>Landing page concepts</h3>
+        <p>Scroll-driven landing explorations.</p>
+        <div class="links"><a class="btn primary" href="https://novas-mv.github.io/vara-expo-concept/">Open</a></div>
+      </div>
+    </article>
+  </div>
+
+  <h2>Design tools</h2>
+  <p>Make the artwork. Each one runs in the browser and as a Figma plugin.</p>
+  <div class="grid">
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/line-shader/" aria-label="Line Shader guide"><svg id="lineArt" viewBox="0 0 1000 625" aria-hidden="true"></svg></a>
+      <div class="body">
+        <span class="tag">Tool · Figma plugin</span>
+        <h3>Line Shader</h3>
+        <p>Draw a line, get a shaded ribbon that looks three-dimensional.</p>
+        <div class="links">
+          <a class="btn primary" href="https://novas-mv.github.io/line-shader/studio/">Studio</a>
+          <a class="btn" href="https://novas-mv.github.io/line-shader/">Guide</a>
+          <a class="btn" href="https://github.com/novas-mv/line-shader/archive/refs/heads/main.zip">Plugin ZIP</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/weave-gradients/" aria-label="Weave Gradients guide"><img src="https://novas-mv.github.io/weave-gradients/card.jpg" alt="" loading="lazy"></a>
+      <div class="body">
+        <span class="tag">Tool · Figma plugin</span>
+        <h3>Weave Gradients</h3>
+        <p>Aurora-style gradient weaves with fabric-like folds, at print resolution.</p>
+        <div class="links">
+          <a class="btn primary" href="https://novas-mv.github.io/weave-gradients/studio/">Studio</a>
+          <a class="btn" href="https://novas-mv.github.io/weave-gradients/">Guide</a>
+          <a class="btn" href="https://github.com/novas-mv/weave-gradients/archive/refs/heads/main.zip">Plugin ZIP</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h2>Novas</h2>
+  <p>The studio's own identity.</p>
+  <div class="grid">
+    <article class="card">
+      <a class="art" href="https://novas-mv.github.io/brand-guide/" aria-label="Open the Novas brand guide"><iframe loading="lazy" tabindex="-1" title="Brand guide preview" src="https://novas-mv.github.io/brand-guide/"></iframe></a>
+      <div class="body">
+        <span class="tag">Brand guide</span>
+        <h3>Novas brand guide</h3>
+        <p>Identity, colour, typography, spacing, applications and voice.</p>
+        <div class="links"><a class="btn primary" href="https://novas-mv.github.io/brand-guide/">Open</a></div>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <a href="https://github.com/novas-mv/brand-hub">Source on GitHub</a> ·
+    Previews are the live pages, so this hub is always current.
+  </footer>
+</div>
+
+<script>
+/* scale each 1280×800 live preview to fit its card */
+const fit = () => document.querySelectorAll('.art iframe').forEach(f => {
+  f.style.transform = `scale(${f.parentElement.clientWidth / 1280})`;
+});
+addEventListener('resize', fit); fit();
+</script>
+<script type="module">
+/* Line Shader's card art is drawn by its own published engine. If it can't load, the card stays plain. */
+try {
+  const base = 'https://novas-mv.github.io/line-shader/';
+  const { paintTube, TUBE } = await import(base + 'system/tube.js');
+  const { STROKES } = await import(base + 'pages/home/data/strokes.js');
+  TUBE.segs = 120; TUBE.stops = 15; TUBE.smooth = 3;
+  paintTube(document.getElementById('lineArt'),
+            'M80,470 C260,120 420,520 560,300 S800,110 930,330',
+            110, STROKES.coral.colors, 150 * Math.PI / 180).reveal(1, 1);
+} catch (e) { /* plain card */ }
+</script>
