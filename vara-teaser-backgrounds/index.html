@@ -1,0 +1,152 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Teaser backgrounds — VARA Expo 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Animated zone backgrounds for the VARA Expo 2026 teaser: the full sequence with wipes, a loop per zone, and the wipe mattes.">
+<style>
+  :root{
+    --bg:#0B1020; --panel:#121a2e; --line:#223049;
+    --ink:#e9edf4; --dim:#93a1b8; --accent:#f87049; --accent2:#14e0d8;
+    --r:12px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:72rem;margin:0 auto;padding:clamp(1.5rem,5vw,4rem) 1.25rem 5rem}
+  .back{font-size:.9rem;text-decoration:none}
+  h1{font-size:clamp(2rem,6vw,2.8rem);line-height:1.1;margin:.75rem 0 .5rem;letter-spacing:-.02em}
+  h2{font-size:1.25rem;margin:3rem 0 .25rem;letter-spacing:-.01em}
+  h2 + p{margin-top:0}
+  p{color:var(--dim);margin:.5rem 0 1rem}
+  .lede{font-size:1.15rem;color:#bfcada;max-width:40rem}
+  a{color:var(--accent)}
+  .spec{font-size:.88rem;color:var(--dim)}
+
+  .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));margin:1rem 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+        display:flex;flex-direction:column}
+  .card.hero{grid-column:1/-1}
+  video{display:block;width:100%;aspect-ratio:16/9;background:#0e1527;border-bottom:1px solid var(--line)}
+  .body{padding:1rem 1.15rem 1.15rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+  .body h3{margin:0;font-size:1.05rem}
+  .body p{margin:0 0 .5rem;font-size:.93rem}
+  .tag{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
+  .links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto}
+  .btn{display:inline-block;padding:.5rem .8rem;border-radius:8px;text-decoration:none;
+       font-weight:600;font-size:.86rem;border:1px solid var(--line);color:var(--ink)}
+  .btn.primary{background:var(--accent);border-color:transparent;color:#14100e}
+  .btn:hover{filter:brightness(1.1)}
+
+  ol.steps{color:#bfcada;padding-left:1.25rem;max-width:44rem}
+  ol.steps li{margin:.35rem 0}
+  code{font:.85em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:.05rem .3rem;color:var(--ink)}
+
+  .table{overflow-x:auto}
+  table{border-collapse:collapse;font-size:.9rem;min-width:34rem}
+  th,td{text-align:left;padding:.45rem .9rem .45rem 0;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600}
+  td.n{font-variant-numeric:tabular-nums}
+
+  .mattes{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));margin:1rem 0}
+  .matte{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--panel);
+         border:1px solid var(--line);border-radius:var(--r);padding:.8rem 1rem}
+  .matte span{font-size:.93rem}
+  .matte small{display:block;color:var(--dim)}
+
+  footer{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--line);color:#6e7d95;font-size:.88rem}
+</style>
+
+<div class="wrap">
+  <a class="back" href="../">← Brand hub</a>
+  <h1>Teaser backgrounds</h1>
+  <p class="lede">Animated zone backgrounds for the VARA Expo 2026 teaser, ready for After Effects.
+     No text, icons or road. Those go on top.</p>
+  <p class="spec">1920×1080 · 25 fps · Rec.709 · H.264, high bitrate</p>
+
+  <h2>Full sequence</h2>
+  <p>All five zones joined by soft fabric wipes. Drop it in at frame 0 and build on top.</p>
+  <div class="grid">
+    <article class="card hero">
+      <video controls muted playsinline preload="none" poster="posters/full.jpg" src="files/vara-zones-backgrounds-with-wipes_1080p25.mp4"></video>
+      <div class="body">
+        <span class="tag">Start here</span>
+        <h3>Zone backgrounds with wipes <span class="spec">· 15.5 s · 25 MB</span></h3>
+        <p>Career → Education → Skills → Market wipe in from the right; the summary comes down from the top.
+           Each wipe is 22 frames (summary 28), ease in-out, with a soft lit crest.</p>
+        <div class="links"><a class="btn primary" href="files/vara-zones-backgrounds-with-wipes_1080p25.mp4" download>Download</a></div>
+      </div>
+    </article>
+  </div>
+
+  <h2>Zone loops</h2>
+  <p>One seamless 10 s loop per zone, for building or retiming the wipes yourself. All four zones are matched
+     in brightness, so a wipe between them never pumps.</p>
+  <div class="grid">
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/career.jpg" src="files/01-career-background-loop-10s_1080p25.mp4"></video>
+      <div class="body"><span class="tag">01</span><h3>Career</h3><p>Coral and plum, teal-green fold, blue-violet glow.</p>
+        <div class="links"><a class="btn primary" href="files/01-career-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/education.jpg" src="files/02-education-background-loop-10s_1080p25.mp4"></video>
+      <div class="body"><span class="tag">02</span><h3>Education</h3><p>Green rising from the bottom-right, warm orange glow.</p>
+        <div class="links"><a class="btn primary" href="files/02-education-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/skills.jpg" src="files/03-skills-background-loop-10s_1080p25.mp4"></video>
+      <div class="body"><span class="tag">03</span><h3>Skills Experience</h3><p>Blue with a long cyan fold, green and violet glows.</p>
+        <div class="links"><a class="btn primary" href="files/03-skills-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/market.jpg" src="files/04-market-background-loop-10s_1080p25.mp4"></video>
+      <div class="body"><span class="tag">04</span><h3>Market</h3><p>Violet light from the top, orange and blue glows.</p>
+        <div class="links"><a class="btn primary" href="files/04-market-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/summary.jpg" src="files/05-summary-background-loop-10s_1080p25.mp4"></video>
+      <div class="body"><span class="tag">05</span><h3>Summary</h3><p>Deep navy with teal, violet and amber light on the right.</p>
+        <div class="links"><a class="btn primary" href="files/05-summary-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+    </article>
+  </div>
+
+  <h2>Wipe mattes</h2>
+  <p>The same wipes as full-length luma mattes: black before the wipe, white after. Drop one in at frame 0 and
+     use it as a track matte over two loops to move or stretch that wipe.</p>
+  <div class="mattes">
+    <div class="matte"><span>1 · Career → Education<small>wipe frames 54–75</small></span><a class="btn" href="files/wipe-1-career-to-education_frames-54-75.mp4" download>Download</a></div>
+    <div class="matte"><span>2 · Education → Skills<small>wipe frames 130–151</small></span><a class="btn" href="files/wipe-2-education-to-skills_frames-130-151.mp4" download>Download</a></div>
+    <div class="matte"><span>3 · Skills → Market<small>wipe frames 206–227</small></span><a class="btn" href="files/wipe-3-skills-to-market_frames-206-227.mp4" download>Download</a></div>
+    <div class="matte"><span>4 · Market → Summary<small>wipe frames 283–310</small></span><a class="btn" href="files/wipe-4-market-to-summary_frames-283-310.mp4" download>Download</a></div>
+  </div>
+
+  <h2>Using them in After Effects</h2>
+  <ol class="steps">
+    <li><strong>Quickest:</strong> put the full sequence in a 1920×1080, 25 fps comp at frame 0. Titles and icons
+        land on each zone's hold; leave the wipes clear of type.</li>
+    <li><strong>To retime:</strong> stack two zone loops, put that transition's matte above the incoming one and set it
+        as a Luma Matte, then slide or time-stretch the matte. The loops are seamless, so extend them as far as you need.</li>
+    <li>Keep the comp at 25 fps. Converting frame rates later will make the drift judder.</li>
+  </ol>
+
+  <h2>Timing</h2>
+  <p>Frames at 25 fps; timecode is seconds:frames.</p>
+  <div class="table"><table>
+    <tr><th>Section</th><th>Frames</th><th>Timecode</th><th>Wipe</th></tr>
+    <tr><td>Career</td><td class="n">0–51</td><td class="n">00:00–02:01</td><td></td></tr>
+    <tr><td>Career → Education</td><td class="n">52–75</td><td class="n">02:02–03:00</td><td class="n">54–75</td></tr>
+    <tr><td>Education</td><td class="n">76–127</td><td class="n">03:01–05:02</td><td></td></tr>
+    <tr><td>Education → Skills</td><td class="n">128–151</td><td class="n">05:03–06:01</td><td class="n">130–151</td></tr>
+    <tr><td>Skills Experience</td><td class="n">152–203</td><td class="n">06:02–08:03</td><td></td></tr>
+    <tr><td>Skills → Market</td><td class="n">204–227</td><td class="n">08:04–09:02</td><td class="n">206–227</td></tr>
+    <tr><td>Market</td><td class="n">228–279</td><td class="n">09:03–11:04</td><td></td></tr>
+    <tr><td>Market → Summary</td><td class="n">280–311</td><td class="n">11:05–12:11</td><td class="n">283–310</td></tr>
+    <tr><td>Summary</td><td class="n">312–386</td><td class="n">12:12–15:11</td><td></td></tr>
+  </table></div>
+  <p><a href="files/README.txt" download>README.txt</a> has the same notes as plain text.</p>
+
+  <footer>
+    Made with <a href="https://novas-mv.github.io/weave-gradients/">Weave Gradients</a>.
+    Source: <a href="https://github.com/novas-mv/weave-gradients/tree/claude/confident-turing-9dcec1/motion">weave-gradients/motion</a>.
+  </footer>
+</div>
