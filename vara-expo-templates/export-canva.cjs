@@ -116,7 +116,7 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;
         `<img src="${url(`p${p.n}-photo${k + 1}.png`)}" alt="Photo placeholder" style="left:${px(ph.x)};top:${px(ph.y)};width:${px(ph.w)};height:${px(ph.h)}">`));
       for (const it of p.data.items) {
         if (it.k === 'rect') els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};height:${px(it.h)};background:${it.c.hex};opacity:${it.c.a};border-radius:${px(it.rad)}"></div>`);
-        else els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};font-family:'${CANVA_FONT[it.font] || it.font}';font-size:${px(it.size)};font-weight:${it.weight};line-height:${px(it.lh)};letter-spacing:${px(it.ls)};color:${it.c.hex};opacity:${it.c.a};text-align:${it.align}">${it.html}</div>`);
+        else els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};font-family:'${CANVA_FONT[it.font] || it.font}';font-size:${px(it.size)};font-weight:${it.weight};line-height:${px(it.lh)};letter-spacing:${px(it.ls)};color:${it.c.hex};opacity:${it.c.a};text-align:${it.align}${it.single ? ';white-space:nowrap' : ''}">${it.html}</div>`);
       }
       return `<section data-document-role="page" data-label="${p.label}" style="width:${p.w}px;height:${p.h}px;background:${p.data.bg.hex}">\n  ${els.join('\n  ')}\n</section>`;
     }).join('\n');
@@ -219,14 +219,21 @@ function extract(sel) {
         const runs = [];
         for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent.trim()) { const rg = document.createRange(); rg.selectNodeContents(n); runs.push(rg.getBoundingClientRect()); }
         if (runs.length && align === 'left') { const tl = Math.min(...runs.map(b => b.left)) - S.left; if (tl > x + 1) { w -= tl - x; x = tl; } }
-        const slack = Math.max(6, w * 0.04);
+        const runTop = runs.length ? Math.min(...runs.map(b => b.top)) - S.top : null;
+        /* Canva's metrics differ slightly: a single line gets room to grow and is kept on one line;
+           a paragraph gets none, so columns keep their gutters */
+        const lhPx = cs.lineHeight === 'normal' ? parseFloat(cs.fontSize) * 1.2 : parseFloat(cs.lineHeight);
+        const single = (r.height - pt - parseFloat(cs.paddingBottom) - parseFloat(cs.borderBottomWidth)) < lhPx * 1.5;
+        const slack = single ? Math.max(20, w * 0.25) : 0;
         if (align === 'left') w += slack; else if (align === 'right') { x -= slack; w += slack; } else { x -= slack / 2; w += slack; }
         const size = parseFloat(cs.fontSize);
         const html = ser(el, op).replace(/\s*<br>\s*/g, '<br>').trim();
         let lh = cs.lineHeight === 'normal' ? size * 1.2 : parseFloat(cs.lineHeight), y = r.top + pt - S.top;
+        /* text that follows a block child (a label under a number) starts where the text is, not at the box top */
+        if (runTop !== null && runTop > y + lh * 0.5) y = runTop - (lh - size) / 2;
         if (lh < size) { y -= (size - lh) / 2; lh = size; }
         if (html) items.push({
-          k: 'text', x, y, w, html, lh,
+          k: 'text', x, y, w, html, lh, single,
           font: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim(),
           size, weight: cs.fontWeight,
           ls: cs.letterSpacing === 'normal' ? 0 : parseFloat(cs.letterSpacing),
