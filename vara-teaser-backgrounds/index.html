@@ -27,6 +27,9 @@
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
         display:flex;flex-direction:column}
   .card.hero{grid-column:1/-1}
+  .ref{display:grid;gap:1.25rem;grid-template-columns:minmax(0,26rem) 1fr;align-items:start}
+  .ref video{aspect-ratio:8/9;border:1px solid var(--line);border-radius:var(--r)}
+  @media (max-width:46rem){.ref{grid-template-columns:1fr}}
   .new{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#14100e;background:var(--accent2);border-radius:4px;padding:.05rem .35rem;margin-left:.35rem;vertical-align:2px}
   tr.sec td{color:var(--accent2);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding-top:1rem}
   video{display:block;width:100%;aspect-ratio:16/9;background:#0e1527;border-bottom:1px solid var(--line)}
@@ -83,6 +86,24 @@
         <div class="links"><a class="btn primary" href="files/vara-teaser-backgrounds-full_1080p30.mp4" download>Download</a></div>
       </div>
     </article>
+  </div>
+
+  <h2>Reference: the cut over the new plate</h2>
+  <div class="ref">
+    <video controls playsinline preload="none" poster="posters/reference.jpg" src="files/reference-cut-over-new-backgrounds_30fps.mp4"></video>
+    <div>
+      <p>Your 37 s cut on top and the new background plate underneath, frame-synced at 30 fps with the cut’s audio.
+         Use it to check where each new ground and wipe lands against your edit.</p>
+      <p>Quick notes for the build:</p>
+      <ol class="steps">
+        <li>The plate is drop-in: frame 0 of the plate is frame 0 of your cut.</li>
+        <li>The <strong>Skills beat</strong> is now blue, the Skills zone’s colour, not lime. The tube strands that sweep across it
+            may need recolouring to sit on blue.</li>
+        <li>Partner cards: reveal the cards comp with matte 11, the sunrise at frames 952–983, and fade the card content in
+            from about frame 984, so the Ministry crest doesn’t ghost through the soft edge.</li>
+      </ol>
+      <div class="links"><a class="btn" href="files/reference-cut-over-new-backgrounds_30fps.mp4" download>Download reference · 6 MB</a></div>
+    </div>
   </div>
 
   <h2>Intro</h2>
