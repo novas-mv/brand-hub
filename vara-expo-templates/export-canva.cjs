@@ -27,6 +27,9 @@ const TEMPLATES = [
   { slug: 'report-daybreak',        name: 'VARA Expo 2026 · Report · Daybreak',        type: 'a4' },
 ];
 
+/* Canva's importer never maps Hanken Grotesk, but it has the same face under its older name,
+   HK Grotesk, which is also what the existing VARA prospectus deck uses. */
+const CANVA_FONT = { 'Hanken Grotesk': 'HK Grotesk' };
 const FONTS = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap';
 
 (async () => {
@@ -113,7 +116,7 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;
         `<img src="${url(`p${p.n}-photo${k + 1}.png`)}" alt="Photo placeholder" style="left:${px(ph.x)};top:${px(ph.y)};width:${px(ph.w)};height:${px(ph.h)}">`));
       for (const it of p.data.items) {
         if (it.k === 'rect') els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};height:${px(it.h)};background:${it.c.hex};opacity:${it.c.a};border-radius:${px(it.rad)}"></div>`);
-        else els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};font-family:'${it.font}';font-size:${px(it.size)};font-weight:${it.weight};line-height:${px(it.lh)};letter-spacing:${px(it.ls)};color:${it.c.hex};opacity:${it.c.a};text-align:${it.align}">${it.html}</div>`);
+        else els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};font-family:'${CANVA_FONT[it.font] || it.font}';font-size:${px(it.size)};font-weight:${it.weight};line-height:${px(it.lh)};letter-spacing:${px(it.ls)};color:${it.c.hex};opacity:${it.c.a};text-align:${it.align}">${it.html}</div>`);
       }
       return `<section data-document-role="page" data-label="${p.label}" style="width:${p.w}px;height:${p.h}px;background:${p.data.bg.hex}">\n  ${els.join('\n  ')}\n</section>`;
     }).join('\n');
@@ -125,7 +128,7 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;
 ${body}
 </body></html>
 `;
-    fs.writeFileSync(path.join(OUT, tpl.slug, 'index.html'), html);
+    fs.writeFileSync(path.join(OUT, tpl.slug, 'index.html'), html.replace(/font-family:'Hanken Grotesk'/g, "font-family:'HK Grotesk'"));
     console.log(tpl.slug, own.length, 'pages');
   });
 })();
