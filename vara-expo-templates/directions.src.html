@@ -1,0 +1,855 @@
+<title>VARA Template Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: a navy review board. Each chosen direction is a full template set of real-size slides/pages, scaled to fit. */
+:root{
+  color-scheme:dark;
+  --navy-950:#00133F; --navy:#001D61;
+  --cream:#F3EDDF; --paper:#F8F4EA; --ink:#F6F1E6; --ink-on-light:#04143C;
+  --coral:#FF8A66; --green:#6BFE96; --cyan:#1FE1FE; --violet:#B66CF1;
+  /* darker partners of the zone colours, for small type on light grounds (all >= 4.5:1 on cream) */
+  --coral-ink:#C2441C; --green-ink:#17743A; --cyan-ink:#086E80; --violet-ink:#6F2DBF;
+  --dim:rgba(246,241,230,.62); --line:rgba(246,241,230,.14);
+  --f-display:"Hanken Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--navy-950);color:var(--ink);font:16px/1.6 var(--f-display);-webkit-font-smoothing:antialiased}
+.wrap{max-width:100rem;margin:0 auto;padding-inline:clamp(16px,3vw,48px);padding-block:clamp(28px,5vw,64px) 80px}
+header.top{display:grid;gap:14px;max-width:54rem}
+.kicker{font:700 12px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+h1.board{font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
+h1.board em{font-style:normal;color:var(--coral)}
+.lede{color:#c9d0de;font-size:17px;max-width:46rem;margin:0}
+.changes{display:grid;gap:8px;margin:6px 0 0;padding:0;list-style:none;color:#c9d0de;font-size:15px;max-width:46rem}
+.changes li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.changes li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);margin-top:9px}
+.changes b{color:var(--ink);font-weight:600}
+
+h2.part{font-weight:800;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin:72px 0 4px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+h2.part span{font:500 13px/1 var(--f-mono);color:var(--dim);letter-spacing:.04em}
+
+section.dir{margin-top:36px;padding-top:28px;border-top:1px solid var(--line);display:grid;gap:18px}
+.dir-head{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:baseline}
+.dir-tag{font:700 13px/1 var(--f-mono);color:var(--navy-950);background:var(--cream);padding:7px 10px;border-radius:7px;letter-spacing:.06em}
+.dir-head h3{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.dir-head p{grid-column:2;margin:0;color:#c9d0de;max-width:54rem;min-width:0}
+.dir-head p b{color:var(--ink);font-weight:600}
+
+.row{display:grid;gap:18px 14px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.row.pages{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:1100px){.row{grid-template-columns:repeat(2,minmax(0,1fr))}.row.pages{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.row,.row.pages{grid-template-columns:1fr}.dir-head{grid-template-columns:1fr}.dir-head p{grid-column:1}}
+figure{margin:0;display:grid;gap:8px;min-width:0}
+figcaption{font:500 11px/1.3 var(--f-mono);color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.frame{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:5px;box-shadow:0 18px 40px -18px rgba(0,9,30,.9),0 0 0 1px var(--line)}
+.pages .frame{aspect-ratio:794/1123}
+
+/* ============ the artwork: every slide is 1280x720, every page 794x1123 ============ */
+.s{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;overflow:hidden;
+   font-family:var(--f-display);color:var(--ink-on-light);background:var(--cream)}
+.pages .s{width:794px;height:1123px}
+.s.navy{background:var(--navy);color:var(--ink)}
+.s.paper{background:var(--paper)}
+.abs{position:absolute}
+svg.tb{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.eb{font:700 15px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;margin:0}
+.h{font-weight:800;letter-spacing:-.03em;line-height:1;margin:0;text-wrap:balance}
+.p{font-size:19px;line-height:1.5;margin:0}
+.ft{position:absolute;left:72px;right:72px;bottom:38px;display:flex;justify-content:space-between;
+    font:500 12.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;opacity:.72}
+.num{font-variant-numeric:tabular-nums}
+.big{font-weight:900;letter-spacing:-.05em;line-height:.9}
+
+.wm{display:flex;align-items:center;gap:12px}
+.wm img{width:60px;height:auto;display:block}
+.wm div{display:grid;line-height:.9}
+.wm b{font-weight:800;font-size:26px;letter-spacing:-.01em}
+.wm b.yr{color:var(--coral);font-weight:900;letter-spacing:.02em}
+.s:not(.navy) .wm b.yr{color:var(--coral-ink)}
+img.logo{display:block;height:auto}
+
+.au{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.au b{position:absolute;left:calc(var(--x) - var(--w)/2);top:calc(var(--y) - var(--h)/2);width:var(--w);height:var(--h);
+      border-radius:50%;background:var(--c);filter:blur(var(--bl,80px));opacity:var(--o,.8);transform:rotate(var(--r,0deg))}
+.win{position:absolute;border-radius:36px;overflow:hidden;background:var(--navy);color:var(--cream)}
+.ph{position:absolute;overflow:hidden;display:flex;align-items:flex-end;padding:18px;background:#e9dfcb}
+.ph::before{content:"";position:absolute;inset:0;background:
+   repeating-linear-gradient(135deg,rgba(4,20,60,.05) 0 2px,transparent 2px 14px)}
+.ph span{position:relative;font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-on-light);opacity:.75}
+.win .ph{background:#16307a}
+.win .ph span{color:var(--cream)}
+.win .ph::before{background:repeating-linear-gradient(135deg,rgba(246,241,230,.06) 0 2px,transparent 2px 14px)}
+
+/* decks: shared parts */
+.glass{background:rgba(255,253,248,.62);border-radius:22px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.75),0 20px 50px -30px rgba(0,29,97,.35)}
+.aud{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.aud .glass{padding:28px 24px;display:grid;gap:12px;align-content:start;min-height:280px}
+.aud .glass .eb{font-size:12.5px}
+.aud h4{margin:0;font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.aud p{margin:0;font-size:16.5px;line-height:1.45;opacity:.8}
+.agenda{display:grid}
+.agenda div{display:grid;grid-template-columns:70px 1fr auto;align-items:baseline;gap:16px;padding:19px 0;border-bottom:1px solid rgba(4,20,60,.16)}
+.agenda div:last-child{border-bottom:0}
+.agenda i{font:700 15px/1 var(--f-mono);font-style:normal;letter-spacing:.08em}
+.agenda b{font-size:30px;font-weight:700;letter-spacing:-.02em}
+.agenda span{font:500 14px/1 var(--f-mono);opacity:.6}
+.tbl{width:100%;border-collapse:collapse;font-size:20px;color:inherit;font-family:var(--f-display)}
+.tbl th{font:700 13px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:0 0 16px;opacity:.7}
+.tbl td{padding:17px 0;border-top:1px solid rgba(4,20,60,.16)}
+.tbl td:first-child{font-weight:700;display:flex;align-items:center;gap:12px}
+.tbl td i{width:12px;height:12px;border-radius:50%}
+.reasons{display:grid}
+.reasons div{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:20px 0;border-bottom:1px solid rgba(4,20,60,.16)}
+.reasons i{grid-row:span 2;width:44px;height:44px;border-radius:50%;margin-top:2px}
+.reasons b{font-size:24px;font-weight:800;letter-spacing:-.01em}
+.reasons span{font-size:16.5px;opacity:.8;line-height:1.4}
+.cols4{display:grid;grid-template-columns:repeat(4,1fr)}
+.cols4 div{padding:0 28px;border-left:1px solid rgba(4,20,60,.18);display:grid;gap:10px;align-content:start}
+.cols4 div:first-child{padding-left:0;border-left:0}
+.cols4 b{font-size:78px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.cols4 span{font-size:16.5px;opacity:.8;line-height:1.4}
+.info{display:grid;gap:30px}
+.info div{display:grid;gap:8px;padding-left:20px;border-left:3px solid var(--z)}
+.info .eb{font-size:13px;color:var(--green)}
+.info b{font-size:26px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+
+/* reports */
+.rh,.rf{position:absolute;left:64px;right:64px;display:flex;justify-content:space-between;font:500 10.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.rh{top:40px}.rf{bottom:36px}
+.cols2{column-count:2;column-gap:28px;font-size:12.5px;line-height:1.62}
+.cols2 p{margin:0 0 10px;break-inside:avoid}
+.secno{font:700 12px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink-on-light)}
+.kpis div{padding:18px 16px 18px 0;border-bottom:1px solid rgba(4,20,60,.16);display:grid;gap:6px}
+.kpis b{font-size:44px;font-weight:800;letter-spacing:-.035em;line-height:1}
+.kpis span{font-size:12px;line-height:1.35;opacity:.78}
+.bars{display:grid;gap:12px}
+.bars .r{display:grid;grid-template-columns:96px 1fr 58px;align-items:center;gap:12px;font-size:12.5px}
+.bars .r i{display:block;height:22px;border-radius:3px}
+.bars .r em{font-style:normal;font:500 12px var(--f-mono);text-align:right}
+.note{font:400 10px/1.4 var(--f-mono);opacity:.6;letter-spacing:.04em;margin:0}
+.toc{display:grid}
+.toc div{display:grid;grid-template-columns:56px 1fr auto;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid rgba(4,20,60,.16)}
+.toc i{font:700 12px/1 var(--f-mono);font-style:normal;letter-spacing:.1em}
+.toc b{font-size:22px;font-weight:700;letter-spacing:-.015em}
+.toc em{font-style:normal;font-size:12.5px;opacity:.7;grid-column:2;margin-top:-6px}
+.toc span{font:500 12px/1 var(--f-mono);opacity:.65;grid-row:1;grid-column:3}
+.ztab{width:100%;border-collapse:collapse;font-size:12.5px;color:var(--ink-on-light);font-family:var(--f-display)}
+.ztab th{font:700 10.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;text-align:left;padding:0 0 10px;opacity:.7}
+.ztab th:not(:first-child),.ztab td:not(:first-child){text-align:right}
+.ztab td{padding:11px 0;border-top:1px solid rgba(4,20,60,.15);font-variant-numeric:tabular-nums}
+.ztab td:first-child{display:flex;align-items:center;gap:10px;font-weight:700}
+.ztab td i{width:10px;height:10px;border-radius:50%}
+.rail{position:absolute;left:0;top:0;bottom:0;width:150px;background:var(--navy);overflow:hidden;color:var(--cream)}
+.rail .n{position:absolute;left:40px;top:64px;font-size:54px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.rail .lbl{position:absolute;left:56px;bottom:64px;writing-mode:vertical-rl;transform:rotate(180deg);font:700 11px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;opacity:.9}
+
+footer.end{margin-top:72px;padding-top:24px;border-top:1px solid var(--line);color:var(--dim);font-size:14px;display:grid;gap:6px;max-width:54rem}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <span class="kicker">VARA Expo 2026 · template exploration · round 3</span>
+  <h1 class="board">Two <em>decks</em> and three <em>reports</em>, built out as full template sets</h1>
+  <p class="lede">These are the four directions you picked: Daybreak and Night Window for the decks, Annual Review and Night &amp; Day for the report, plus a new Report C that pairs with Daybreak. Each one has every layout a template needs.</p>
+  <ul class="changes">
+    <li><span><b>Real logo.</b> The mark is now the official render from the VARA site, so nothing is clipped or redrawn.</span></li>
+    <li><span><b>Contrast rule.</b> Tubes and glows never cross type. Small coloured labels on cream use darker partners of the zone colours, all at least 4.5:1.</span></li>
+    <li><span><b>Full sets.</b> Each deck has cover, section, agenda, cards, text + image, numbers, table and closing slides. Each report has cover, contents, section opener, narrative, data and back cover pages.</span></li>
+  </ul>
+</header>
+
+<!-- =================================================================== DECKS -->
+<h2 class="part">Presentation decks <span>16:9 · 8 layouts each</span></h2>
+
+<!-- ============ Deck B · Daybreak ============ -->
+<section class="dir">
+  <div class="dir-head">
+    <span class="dir-tag">DECK B</span><h3>Daybreak</h3>
+    <p><b>The night aurora at sunrise.</b> Soft coral, violet and cyan glows bleed in from the edges of a cream page. The logo mark is the hero, and content sits on frosted white panels.</p>
+  </div>
+  <div class="row">
+    <!-- B1 cover -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:80%;--y:42%;--w:62%;--h:95%;--c:#FF8A66;--o:.5;--bl:90px"></b><b style="--x:94%;--y:88%;--w:45%;--h:70%;--c:#B66CF1;--o:.5"></b><b style="--x:64%;--y:6%;--w:40%;--h:55%;--c:#1FE1FE;--o:.32"></b><b style="--x:68%;--y:98%;--w:36%;--h:40%;--c:#6BFE96;--o:.3"></b></div>
+      <img class="logo abs" alt="" style="left:745px;top:118px;width:470px">
+      <div class="abs" style="left:72px;top:140px;display:grid;gap:22px;width:600px">
+        <h1 class="h" style="font-size:128px;line-height:.92">VARA EXPO<br><span style="color:var(--coral-ink)">2026</span></h1>
+        <p class="eb" style="font-size:14px;opacity:.8">National Skills &amp; Career Expo · Maldives</p>
+        <div style="height:2px;width:420px;background:linear-gradient(90deg,var(--violet),var(--coral))"></div>
+        <b style="font-size:34px;letter-spacing:-.02em">26–28 November 2026</b>
+        <span style="font-size:19px;margin-top:-14px;opacity:.8">Central Park, Hulhumalé</span>
+      </div>
+    </div></div><figcaption>01 · Cover</figcaption></figure>
+
+    <!-- B2 section -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:86%;--y:70%;--w:70%;--h:110%;--c:#B66CF1;--o:.5;--bl:100px"></b><b style="--x:100%;--y:20%;--w:45%;--h:70%;--c:#FF8A66;--o:.45"></b><b style="--x:70%;--y:105%;--w:40%;--h:45%;--c:#1FE1FE;--o:.35"></b></div>
+      <div class="abs" style="left:72px;top:210px;display:grid;gap:26px;width:760px">
+        <p class="eb" style="color:var(--violet-ink)">Section 02</p>
+        <h2 class="h" style="font-size:140px;line-height:.9;letter-spacing:-.045em">The programme</h2>
+        <p class="p" style="opacity:.8;max-width:560px">Three days of interviews, skills bays, panels and an evening stage.</p>
+      </div>
+      <div class="ft"><span>VARA EXPO 2026</span><span>05</span></div>
+    </div></div><figcaption>02 · Section divider</figcaption></figure>
+
+    <!-- B3 agenda -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:0%;--y:100%;--w:55%;--h:80%;--c:#FF8A66;--o:.45;--bl:90px"></b><b style="--x:20%;--y:110%;--w:40%;--h:50%;--c:#6BFE96;--o:.3"></b></div>
+      <div class="abs" style="left:72px;top:72px;display:grid;gap:18px;width:380px">
+        <p class="eb" style="color:var(--violet-ink)">Contents</p>
+        <h2 class="h" style="font-size:72px">In this deck</h2>
+      </div>
+      <div class="abs glass agenda" style="left:540px;right:72px;top:72px;padding:14px 40px">
+        <div><i style="color:var(--coral-ink)">01</i><b>Why VARA</b><span>p.02</span></div>
+        <div><i style="color:var(--violet-ink)">02</i><b>The programme</b><span>p.05</span></div>
+        <div><i style="color:var(--green-ink)">03</i><b>Who you'll meet</b><span>p.07</span></div>
+        <div><i style="color:var(--cyan-ink)">04</i><b>Partner packages</b><span>p.09</span></div>
+        <div><i style="color:var(--coral-ink)">05</i><b>Exhibit with us</b><span>p.11</span></div>
+      </div>
+      <div class="ft"><span>VARA EXPO 2026</span><span>02</span></div>
+    </div></div><figcaption>03 · Agenda</figcaption></figure>
+
+    <!-- B4 cards -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:100%;--y:0%;--w:48%;--h:80%;--c:#B66CF1;--o:.42;--bl:90px"></b><b style="--x:84%;--y:-6%;--w:30%;--h:50%;--c:#1FE1FE;--o:.32"></b><b style="--x:0%;--y:105%;--w:40%;--h:55%;--c:#FF8A66;--o:.38"></b></div>
+      <div class="abs" style="left:72px;top:68px;display:grid;gap:16px">
+        <p class="eb" style="color:var(--violet-ink)">Who you'll meet</p>
+        <h2 class="h" style="font-size:62px">Every path forward, in one park.</h2>
+      </div>
+      <div class="abs aud" style="left:72px;right:72px;top:262px">
+        <div class="glass"><span class="eb" style="color:var(--cyan-ink)">Visitors</span><h4>Young people</h4><p>Students, job seekers and people looking to move up.</p></div>
+        <div class="glass"><span class="eb" style="color:var(--green-ink)">Education</span><h4>Universities &amp; colleges</h4><p>National and private institutions with programmes and scholarships.</p></div>
+        <div class="glass"><span class="eb" style="color:var(--coral-ink)">Career</span><h4>Employers</h4><p>Recruiters from across the economy, hiring on the floor.</p></div>
+        <div class="glass"><span class="eb" style="color:var(--violet-ink)">Abroad</span><h4>Diplomatic missions</h4><p>Higher education and training opportunities overseas.</p></div>
+      </div>
+      <div class="ft"><span>VARA EXPO 2026 · 26–28 Nov · Central Park, Hulhumalé</span><span>07</span></div>
+    </div></div><figcaption>04 · Cards</figcaption></figure>
+
+    <!-- B5 text + image -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:72%;--y:50%;--w:60%;--h:110%;--c:#FF8A66;--o:.45;--bl:90px"></b><b style="--x:98%;--y:90%;--w:40%;--h:60%;--c:#B66CF1;--o:.45"></b></div>
+      <div class="ph" style="left:640px;top:72px;width:568px;height:576px;border-radius:28px"><span>Photo · Skills bay, 2025</span></div>
+      <div class="abs" style="left:72px;top:72px;width:500px;display:grid;gap:22px">
+        <p class="eb" style="color:var(--violet-ink)">Hands-on skills bays</p>
+        <h2 class="h" style="font-size:62px">Try the trade before you choose it.</h2>
+        <p class="p" style="opacity:.82">Welding, marine engineering, electrical, culinary and hairdressing bays run all three days, with live competitions on the evening stage.</p>
+      </div>
+      <div class="ft" style="right:auto;width:500px"><span>VARA EXPO 2026</span><span>06</span></div>
+    </div></div><figcaption>05 · Text + image</figcaption></figure>
+
+    <!-- B6 numbers -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:30%;--y:62%;--w:70%;--h:60%;--c:#FF8A66;--o:.38;--bl:100px"></b><b style="--x:72%;--y:58%;--w:60%;--h:55%;--c:#B66CF1;--o:.38;--bl:100px"></b><b style="--x:52%;--y:80%;--w:40%;--h:40%;--c:#1FE1FE;--o:.28"></b></div>
+      <div class="abs" style="left:72px;top:68px;display:grid;gap:16px">
+        <p class="eb" style="color:var(--violet-ink)">The 2025 edition</p>
+        <h2 class="h" style="font-size:62px">It worked. We're doing it bigger.</h2>
+      </div>
+      <div class="abs" style="left:72px;right:72px;top:250px;display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:18px">
+        <div class="glass" style="padding:34px 32px"><b class="num big" style="font-size:112px">30,000+</b><p class="p" style="margin-top:14px;opacity:.82">visitors, about twice the number expected</p></div>
+        <div class="glass" style="padding:34px 32px"><b class="num big" style="font-size:112px;color:var(--coral-ink)">168</b><p class="p" style="margin-top:14px;opacity:.82">exhibitors, public and private sector</p></div>
+        <div class="glass" style="padding:34px 32px"><b class="num big" style="font-size:112px;color:var(--violet-ink)">450</b><p class="p" style="margin-top:14px;opacity:.82">job applications submitted on site</p></div>
+      </div>
+      <div class="ft"><span>Source: Highlights of VARA Expo 2025</span><span>03</span></div>
+    </div></div><figcaption>06 · Numbers</figcaption></figure>
+
+    <!-- B7 table -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:100%;--y:100%;--w:55%;--h:90%;--c:#B66CF1;--o:.45;--bl:90px"></b><b style="--x:80%;--y:110%;--w:40%;--h:50%;--c:#FF8A66;--o:.38"></b></div>
+      <div class="abs" style="left:72px;top:68px;display:grid;gap:16px">
+        <p class="eb" style="color:var(--violet-ink)">Exhibit with us</p>
+        <h2 class="h" style="font-size:62px">Meet the people you're trying to hire.</h2>
+      </div>
+      <div class="abs glass" style="left:72px;top:250px;width:680px;padding:30px 36px 14px">
+        <table class="tbl">
+          <thead><tr><th>Zone</th><th>Fee</th><th>Allocation</th></tr></thead>
+          <tbody>
+            <tr><td><i style="background:var(--coral)"></i>Career</td><td>Free</td><td>1 booth</td></tr>
+            <tr><td><i style="background:var(--green)"></i>Education</td><td>Free</td><td>1 booth</td></tr>
+            <tr><td><i style="background:var(--cyan)"></i>Skills Experience</td><td>Free</td><td>1 booth</td></tr>
+            <tr><td><i style="background:var(--violet)"></i>Market</td><td>Free</td><td>1 booth</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="abs info" style="left:820px;top:262px;width:380px">
+        <div style="--z:var(--coral)"><span class="eb" style="color:var(--coral-ink)">Open daily</span><b>16:00–22:00, Thu–Sat</b></div>
+        <div style="--z:var(--violet)"><span class="eb" style="color:var(--violet-ink)">Who exhibits</span><b>Employers, institutions, training providers and small businesses</b></div>
+      </div>
+      <div class="ft"><span>One booth per registration</span><span>11</span></div>
+    </div></div><figcaption>07 · Table</figcaption></figure>
+
+    <!-- B8 closing -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:76%;--y:50%;--w:70%;--h:110%;--c:#FF8A66;--o:.48;--bl:100px"></b><b style="--x:96%;--y:12%;--w:40%;--h:60%;--c:#1FE1FE;--o:.3"></b><b style="--x:92%;--y:96%;--w:50%;--h:60%;--c:#B66CF1;--o:.48"></b></div>
+      <img class="logo abs" alt="" style="left:790px;top:150px;width:420px">
+      <div class="abs" style="left:72px;top:200px;display:grid;gap:30px">
+        <h2 class="h" style="font-size:150px;letter-spacing:-.05em">Thank you.</h2>
+        <div style="display:grid;gap:8px;font:500 17px/1.4 var(--f-mono);letter-spacing:.04em">
+          <span>varaexpo.mv</span><span>hello@varaexpo.mv</span>
+        </div>
+      </div>
+      <div class="ft"><span>VARA EXPO 2026 · 26–28 Nov · Central Park, Hulhumalé</span><span></span></div>
+    </div></div><figcaption>08 · Closing</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ Deck D · Night Window ============ -->
+<section class="dir">
+  <div class="dir-head">
+    <span class="dir-tag">DECK D</span><h3>Night Window</h3>
+    <p><b>A light deck with a window onto the night.</b> Slides are cream, and each has one rounded navy panel holding the aurora, tubes or a photo. The divider and closing slides open the window to almost the full frame, which links back to the existing dark deck.</p>
+  </div>
+  <div class="row">
+    <!-- D1 cover -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:640px;top:44px;width:596px;height:632px">
+        <div class="au"><b style="--x:20%;--y:30%;--w:90%;--h:70%;--c:#5a3df2;--o:.85"></b><b style="--x:85%;--y:80%;--w:70%;--h:70%;--c:#b14fe0;--o:.7"></b><b style="--x:30%;--y:90%;--w:60%;--h:40%;--c:#1f9fe8;--o:.6"></b><b style="--x:12%;--y:8%;--w:110%;--h:9%;--c:#f2c14e;--o:.6;--bl:30px;--r:-38deg"></b></div>
+      </div>
+      <img class="logo abs" alt="" style="left:612px;top:140px;width:520px">
+      <div class="abs" style="left:72px;top:72px;display:grid;gap:22px;width:500px">
+        <p class="eb" style="color:var(--violet-ink)">Partner &amp; exhibitor prospectus</p>
+        <h1 class="h" style="font-size:96px;line-height:.92">VARA EXPO<br><span style="color:var(--coral-ink)">2026</span></h1>
+      </div>
+      <div class="abs" style="left:72px;bottom:72px;display:grid;gap:8px">
+        <b style="font-size:30px;letter-spacing:-.02em">26–28 November 2026</b>
+        <span class="eb" style="font-size:13px;opacity:.75">Central Park, Hulhumalé</span>
+      </div>
+    </div></div><figcaption>01 · Cover</figcaption></figure>
+
+    <!-- D2 section -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:44px;top:44px;right:44px;bottom:44px">
+        <div class="au"><b style="--x:80%;--y:30%;--w:70%;--h:110%;--c:#6a3df0;--o:.85;--bl:100px"></b><b style="--x:100%;--y:100%;--w:50%;--h:90%;--c:#c04dd8;--o:.6"></b><b style="--x:55%;--y:110%;--w:50%;--h:70%;--c:#1f9fe8;--o:.55"></b><b style="--x:70%;--y:40%;--w:80%;--h:9%;--c:#f2c14e;--o:.5;--bl:30px;--r:-28deg"></b></div>
+        <svg class="tb" viewBox="0 0 1192 632" data-d="M1300,120 C1080,60 920,250 1010,400 S1250,560 1060,720" data-w="120" data-c="violet"></svg>
+        <div class="abs" style="left:64px;top:170px;display:grid;gap:26px;width:760px">
+          <p class="eb" style="color:var(--green)">Section 02</p>
+          <h2 class="h" style="font-size:130px;line-height:.9;letter-spacing:-.045em">The programme</h2>
+          <p class="p" style="opacity:.85;max-width:560px">Three days of interviews, skills bays, panels and an evening stage.</p>
+        </div>
+      </div>
+    </div></div><figcaption>02 · Section divider</figcaption></figure>
+
+    <!-- D3 agenda -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:820px;top:44px;width:416px;height:632px">
+        <div class="au"><b style="--x:50%;--y:30%;--w:120%;--h:60%;--c:#5a3df2;--o:.85"></b><b style="--x:60%;--y:90%;--w:110%;--h:50%;--c:#b14fe0;--o:.6"></b></div>
+        <img class="logo abs" alt="" style="left:58px;top:150px;width:300px">
+      </div>
+      <div class="abs" style="left:72px;top:72px;width:680px;display:grid;gap:26px">
+        <p class="eb" style="color:var(--violet-ink)">Contents</p>
+        <div class="agenda">
+          <div><i style="color:var(--coral-ink)">01</i><b>Why VARA</b><span>p.02</span></div>
+          <div><i style="color:var(--violet-ink)">02</i><b>The programme</b><span>p.05</span></div>
+          <div><i style="color:var(--green-ink)">03</i><b>Who you'll meet</b><span>p.07</span></div>
+          <div><i style="color:var(--cyan-ink)">04</i><b>Partner packages</b><span>p.09</span></div>
+          <div><i style="color:var(--coral-ink)">05</i><b>Exhibit with us</b><span>p.11</span></div>
+        </div>
+      </div>
+      <div class="ft" style="right:auto;width:680px"><span>VARA EXPO 2026</span><span>02</span></div>
+    </div></div><figcaption>03 · Agenda</figcaption></figure>
+
+    <!-- D4 cards / reasons -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:44px;top:44px;width:520px;height:632px">
+        <div class="au"><b style="--x:80%;--y:20%;--w:90%;--h:60%;--c:#7b3cf0;--o:.85"></b><b style="--x:10%;--y:85%;--w:80%;--h:60%;--c:#2a55f5;--o:.7"></b><b style="--x:60%;--y:65%;--w:70%;--h:8%;--c:#f2c14e;--o:.45;--bl:30px;--r:-30deg"></b></div>
+        <svg class="tb" viewBox="0 0 520 632" data-d="M140,760 C190,600 370,560 470,700" data-w="88" data-c="cyan"></svg>
+        <div class="abs" style="left:44px;top:56px;right:44px;display:grid;gap:22px">
+          <p class="eb" style="color:var(--green)">Why partner</p>
+          <h2 class="h" style="font-size:54px;line-height:1.02">Put your brand where the nation's next workforce gathers.</h2>
+        </div>
+      </div>
+      <div class="abs reasons" style="left:640px;top:70px;width:560px">
+        <div><i style="background:var(--coral)"></i><b>Showcase your brand</b><span>In front of 30,000+ visitors over three days.</span></div>
+        <div><i style="background:var(--green)"></i><b>Meet future talent</b><span>Young people choosing their next step.</span></div>
+        <div><i style="background:var(--cyan)"></i><b>Engage industry</b><span>Employers, educators and policymakers in one place.</span></div>
+        <div><i style="background:var(--violet)"></i><b>Build the nation</b><span>A national platform for skills and careers.</span></div>
+      </div>
+      <div class="ft" style="left:640px"><span>VARA EXPO 2026</span><span>04</span></div>
+    </div></div><figcaption>04 · Cards</figcaption></figure>
+
+    <!-- D5 text + image -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:44px;top:44px;width:640px;height:632px">
+        <div class="ph" style="inset:0"><span>Photo · Skills bay, 2025</span></div>
+      </div>
+      <div class="abs" style="left:752px;top:72px;width:456px;display:grid;gap:22px">
+        <p class="eb" style="color:var(--violet-ink)">Hands-on skills bays</p>
+        <h2 class="h" style="font-size:58px">Try the trade before you choose it.</h2>
+        <p class="p" style="opacity:.82">Welding, marine engineering, electrical, culinary and hairdressing bays run all three days, with live competitions on the evening stage.</p>
+      </div>
+      <div class="ft" style="left:752px"><span>VARA EXPO 2026</span><span>06</span></div>
+    </div></div><figcaption>05 · Text + image</figcaption></figure>
+
+    <!-- D6 numbers -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:44px;top:44px;right:44px;height:300px">
+        <div class="au"><b style="--x:75%;--y:40%;--w:60%;--h:160%;--c:#7b3cf0;--o:.85"></b><b style="--x:100%;--y:100%;--w:40%;--h:120%;--c:#d24fb0;--o:.6"></b><b style="--x:40%;--y:110%;--w:50%;--h:100%;--c:#1f9fe8;--o:.55"></b><b style="--x:70%;--y:30%;--w:70%;--h:14%;--c:#f2c14e;--o:.5;--bl:28px;--r:-14deg"></b></div>
+        <div class="abs" style="left:56px;top:62px;display:grid;gap:18px">
+          <p class="eb" style="color:var(--green)">The 2025 edition</p>
+          <h2 class="h" style="font-size:64px">It worked. We're doing it bigger.</h2>
+        </div>
+      </div>
+      <div class="abs cols4" style="left:100px;right:100px;top:410px">
+        <div><b class="num">30k+</b><span>visitors, twice the forecast</span></div>
+        <div><b class="num" style="color:var(--coral-ink)">168</b><span>exhibitors on the floor</span></div>
+        <div><b class="num">450</b><span>job applications on site</span></div>
+        <div><b class="num" style="color:var(--violet-ink)">41</b><span>hired on the spot</span></div>
+      </div>
+      <div class="ft"><span>Source: Highlights of VARA Expo 2025</span><span>03</span></div>
+    </div></div><figcaption>06 · Numbers</figcaption></figure>
+
+    <!-- D7 table -->
+    <figure><div class="frame"><div class="s">
+      <div class="abs" style="left:72px;top:72px;width:660px;display:grid;gap:34px">
+        <div style="display:grid;gap:16px">
+          <p class="eb" style="color:var(--violet-ink)">Exhibit with us</p>
+          <h2 class="h" style="font-size:56px">Meet the people you're trying to hire.</h2>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Zone</th><th>Fee</th><th>Allocation</th></tr></thead>
+          <tbody>
+            <tr><td><i style="background:var(--coral)"></i>Career</td><td>Free</td><td>1 booth</td></tr>
+            <tr><td><i style="background:var(--green)"></i>Education</td><td>Free</td><td>1 booth</td></tr>
+            <tr><td><i style="background:var(--cyan)"></i>Skills Experience</td><td>Free</td><td>1 booth</td></tr>
+            <tr><td><i style="background:var(--violet)"></i>Market</td><td>Free</td><td>1 booth</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="win" style="left:800px;top:44px;width:436px;height:632px">
+        <div class="au"><b style="--x:30%;--y:20%;--w:110%;--h:60%;--c:#6a3df0;--o:.85"></b><b style="--x:80%;--y:95%;--w:110%;--h:50%;--c:#1f9fe8;--o:.55"></b></div>
+        <div class="abs info" style="left:44px;right:44px;top:64px">
+          <div style="--z:var(--coral)"><span class="eb">Open daily</span><b>16:00–22:00<br>Thursday to Saturday</b></div>
+          <div style="--z:var(--cyan)"><span class="eb">Who exhibits</span><b>Employers, institutions, training providers and small businesses</b></div>
+          <div style="--z:var(--violet)"><span class="eb">2025 exhibitors said</span><b>Nearly all were satisfied, and almost all plan to return.</b></div>
+        </div>
+      </div>
+      <div class="ft" style="right:auto;width:660px"><span>One booth per registration</span><span>11</span></div>
+    </div></div><figcaption>07 · Table</figcaption></figure>
+
+    <!-- D8 closing -->
+    <figure><div class="frame"><div class="s">
+      <div class="win" style="left:44px;top:44px;right:44px;bottom:44px">
+        <div class="au"><b style="--x:20%;--y:30%;--w:70%;--h:110%;--c:#5a3df2;--o:.85;--bl:100px"></b><b style="--x:85%;--y:70%;--w:60%;--h:100%;--c:#b14fe0;--o:.65"></b><b style="--x:40%;--y:100%;--w:60%;--h:60%;--c:#1f9fe8;--o:.5"></b><b style="--x:30%;--y:20%;--w:90%;--h:8%;--c:#f2c14e;--o:.55;--bl:30px;--r:-40deg"></b></div>
+        <img class="logo abs" alt="" style="left:720px;top:96px;width:430px">
+        <div class="abs" style="left:64px;top:170px;display:grid;gap:30px">
+          <h2 class="h" style="font-size:140px;letter-spacing:-.05em">Thank you.</h2>
+          <div style="display:grid;gap:8px;font:500 17px/1.4 var(--f-mono);letter-spacing:.04em;opacity:.9">
+            <span>varaexpo.mv</span><span>hello@varaexpo.mv</span>
+          </div>
+        </div>
+      </div>
+    </div></div><figcaption>08 · Closing</figcaption></figure>
+  </div>
+</section>
+
+<!-- =================================================================== REPORTS -->
+<h2 class="part">Post-expo report <span>A4 portrait · 6 pages each · sample figures</span></h2>
+
+<!-- ============ Report A · Annual Review ============ -->
+<section class="dir">
+  <div class="dir-head">
+    <span class="dir-tag">REPORT A</span><h3>Annual Review</h3>
+    <p><b>Calm and editorial.</b> Cream pages, generous margins and two-column text. Tubes only appear on the cover and the section openers. Everywhere else, colour only marks data and pull quotes.</p>
+  </div>
+  <div class="row pages">
+    <!-- A1 cover -->
+    <figure><div class="frame"><div class="s">
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M-80,300 C120,420 300,120 470,180 S700,470 900,330" data-w="118" data-c="coral"></svg>
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M210,-90 C150,120 330,240 520,120 S690,-40 760,-100" data-w="96" data-c="green"></svg>
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M560,540 C470,440 620,330 720,400 S900,540 880,600" data-w="90" data-c="cyan"></svg>
+      <div class="abs" style="left:64px;top:660px;right:64px;display:grid;gap:22px">
+        <p class="eb" style="font-size:12px;color:var(--violet-ink)">Post-expo report · December 2026</p>
+        <h1 class="h" style="font-size:62px;line-height:.98">Three days, one park, every path forward.</h1>
+      </div>
+      <div class="abs" style="left:64px;right:64px;bottom:64px;display:flex;justify-content:space-between;align-items:end;gap:20px;border-top:2px solid var(--ink-on-light);padding-top:18px">
+        <div class="wm"><img class="logo" alt="" style="width:50px"><div><b style="font-size:22px">VARA EXPO</b><b class="yr" style="font-size:22px">2026</b></div></div>
+        <div style="font:500 10.5px/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;text-align:right;opacity:.8">26–28 November 2026<br>Central Park, Hulhumalé</div>
+      </div>
+    </div></div><figcaption>01 · Cover</figcaption></figure>
+
+    <!-- A2 contents -->
+    <figure><div class="frame"><div class="s">
+      <div class="rh"><span>VARA Expo 2026 · Post-expo report</span><span>Contents</span></div>
+      <div class="abs" style="left:64px;right:64px;top:110px;display:grid;gap:40px">
+        <h2 class="h" style="font-size:56px">Contents</h2>
+        <div class="toc" style="border-top:2px solid var(--ink-on-light)">
+          <div><i style="color:var(--coral-ink)">01</i><b>By the numbers</b><span>04</span><em>Headline outcomes</em></div>
+          <div><i style="color:var(--coral-ink)">02</i><b>The three days</b><span>08</span><em>How the floor, stages and evenings ran</em></div>
+          <div><i style="color:var(--coral-ink)">03</i><b>The zones</b><span>12</span><em>Career, Education, Skills and Market</em></div>
+          <div><i style="color:var(--coral-ink)">04</i><b>Partners &amp; exhibitors</b><span>20</span><em>Who took part and what they said</em></div>
+          <div><i style="color:var(--coral-ink)">05</i><b>Visitor feedback</b><span>24</span><em>Survey results</em></div>
+          <div><i style="color:var(--coral-ink)">06</i><b>Looking ahead</b><span>28</span><em>Recommendations for 2027</em></div>
+        </div>
+      </div>
+      <div class="abs" style="left:64px;right:64px;top:860px;display:grid;grid-template-columns:1fr 1fr;gap:28px;font-size:12.5px;line-height:1.62">
+        <p style="margin:0;font-size:15px;line-height:1.45;font-weight:600">VARA Expo is the Maldives' national skills and career expo, organised by the Ministry of Homeland Security, Labour and Technology.</p>
+        <p style="margin:0;opacity:.8">This report covers the 2026 edition, held 26–28 November at Central Park, Hulhumalé.</p>
+      </div>
+      <div class="rf"><span>varaexpo.mv</span><span>02</span></div>
+    </div></div><figcaption>02 · Contents</figcaption></figure>
+
+    <!-- A3 section opener -->
+    <figure><div class="frame"><div class="s">
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M900,120 C700,40 520,200 580,360 S820,520 640,640 S380,600 300,700" data-w="112" data-c="violet"></svg>
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M-90,420 C60,320 200,420 190,560" data-w="96" data-c="green"></svg>
+      <div class="abs" style="left:64px;right:64px;top:800px;display:grid;gap:18px">
+        <span class="secno" style="color:var(--coral-ink)">Section 03</span>
+        <h2 class="h" style="font-size:96px;letter-spacing:-.045em">The zones</h2>
+        <p style="margin:0;font-size:17px;line-height:1.45;opacity:.82;max-width:520px">Career, Education, Skills Experience and Market, reported one by one.</p>
+      </div>
+      <div class="rf"><span>varaexpo.mv</span><span>12</span></div>
+    </div></div><figcaption>03 · Section opener</figcaption></figure>
+
+    <!-- A4 narrative -->
+    <figure><div class="frame"><div class="s">
+      <div class="rh"><span>VARA Expo 2026 · Post-expo report</span><span>The three days</span></div>
+      <div class="abs" style="left:64px;right:64px;top:96px;display:grid;gap:14px">
+        <span class="secno" style="color:var(--coral-ink)">Section 02</span>
+        <h2 class="h" style="font-size:44px">The three days</h2>
+        <p style="margin:0;font-size:17px;line-height:1.45;opacity:.82;max-width:560px">How the floor, the stages and the evening programme ran from Thursday to Saturday.</p>
+      </div>
+      <div class="ph" style="left:64px;right:64px;top:290px;height:250px;border-radius:4px"><span>Photo · Skills bay, day two</span></div>
+      <div class="abs cols2" style="left:64px;right:64px;top:572px">
+        <p>Doors opened at 16:00 on Thursday 26 November to queues along the Central Park promenade. By the first evening the Career zone had taken more walk-in interviews than on any day of the 2025 edition.</p>
+        <p>The Skills bays ran live welding, marine engineering and culinary competitions on all three days, with heats on Friday and finals on the Saturday evening stage.</p>
+        <p style="font-size:21px;line-height:1.3;font-weight:700;color:var(--coral-ink);letter-spacing:-.01em;margin:14px 0 18px;padding-left:14px;border-left:3px solid var(--coral)">“I came for the welding demo and left with an interview on Monday.”</p>
+        <p>Education sessions ran twice daily in Dhivehi and English. The livestreamed panels drew a peak online audience on Friday night, when the AI and future-of-work panel was on.</p>
+        <p>Saturday was the busiest day, with family traffic peaking after 19:00 for the evening stage.</p>
+      </div>
+      <div class="rf"><span>varaexpo.mv</span><span>08</span></div>
+    </div></div><figcaption>04 · Narrative</figcaption></figure>
+
+    <!-- A5 data -->
+    <figure><div class="frame"><div class="s">
+      <div class="rh"><span>VARA Expo 2026 · Post-expo report</span><span>By the numbers</span></div>
+      <div class="abs" style="left:64px;right:64px;top:96px;display:grid;gap:14px">
+        <span class="secno" style="color:var(--coral-ink)">Section 01</span>
+        <h2 class="h" style="font-size:44px">By the numbers</h2>
+      </div>
+      <div class="abs kpis" style="left:64px;right:64px;top:208px">
+        <div><b class="num">32,400</b><span>visitors over three days</span></div>
+        <div><b class="num">186</b><span>exhibitors, public and private</span></div>
+        <div><b class="num">612</b><span>job applications submitted</span></div>
+        <div><b class="num" style="color:var(--coral-ink)">58</b><span>hired on the spot</span></div>
+        <div><b class="num">44</b><span>scholarships awarded</span></div>
+        <div><b class="num">1,100+</b><span>courses showcased</span></div>
+      </div>
+      <div class="abs" style="left:64px;right:64px;top:520px;display:grid;gap:18px">
+        <span class="secno">Visitors by day</span>
+        <div class="bars">
+          <div class="r"><span>Thu 26 Nov</span><i style="width:58%;background:var(--ink-on-light)"></i><em>8,900</em></div>
+          <div class="r"><span>Fri 27 Nov</span><i style="width:76%;background:var(--ink-on-light)"></i><em>10,700</em></div>
+          <div class="r"><span>Sat 28 Nov</span><i style="width:92%;background:var(--coral)"></i><em>12,800</em></div>
+        </div>
+      </div>
+      <div class="abs" style="left:64px;right:64px;top:720px;display:grid;gap:18px">
+        <span class="secno">Visits by zone</span>
+        <div style="display:flex;height:40px;border-radius:3px;overflow:hidden">
+          <i style="flex:34;background:var(--coral)"></i><i style="flex:27;background:var(--green)"></i><i style="flex:22;background:var(--cyan)"></i><i style="flex:17;background:var(--violet)"></i>
+        </div>
+        <div style="display:grid;grid-template-columns:34fr 27fr 22fr 17fr;font:500 11px/1.4 var(--f-mono);letter-spacing:.04em">
+          <span>CAREER<br><b style="font-size:20px;font-family:var(--f-display)">34%</b></span><span>EDUCATION<br><b style="font-size:20px;font-family:var(--f-display)">27%</b></span><span>SKILLS<br><b style="font-size:20px;font-family:var(--f-display)">22%</b></span><span>MARKET<br><b style="font-size:20px;font-family:var(--f-display)">17%</b></span>
+        </div>
+      </div>
+      <p class="abs note" style="left:64px;right:64px;top:930px">Sample figures for layout only.</p>
+      <div class="rf"><span>varaexpo.mv</span><span>05</span></div>
+    </div></div><figcaption>05 · Data</figcaption></figure>
+
+    <!-- A6 back cover -->
+    <figure><div class="frame"><div class="s">
+      <img class="logo abs" alt="" style="left:247px;top:300px;width:300px">
+      <div class="abs" style="left:64px;right:64px;top:650px;text-align:center;display:grid;gap:10px;justify-items:center">
+        <b style="font-size:34px;font-weight:800;letter-spacing:-.01em;line-height:.95">VARA EXPO<br><span style="color:var(--coral-ink);font-weight:900">2026</span></b>
+        <span style="font:500 11px/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:8px">National Skills &amp; Career Expo · Maldives</span>
+      </div>
+      <div class="abs" style="left:64px;right:64px;bottom:64px;border-top:2px solid var(--ink-on-light);padding-top:18px;display:flex;justify-content:space-between;gap:20px;font:500 10.5px/1.7 var(--f-mono);letter-spacing:.06em;text-transform:uppercase">
+        <span style="opacity:.8">Organised by the Ministry of Homeland<br>Security, Labour and Technology</span>
+        <span style="text-align:right;opacity:.8">varaexpo.mv<br>hello@varaexpo.mv</span>
+      </div>
+    </div></div><figcaption>06 · Back cover</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ Report B · Night & Day ============ -->
+<section class="dir">
+  <div class="dir-head">
+    <span class="dir-tag">REPORT B</span><h3>Night &amp; Day</h3>
+    <p><b>Dark outside, light inside.</b> The cover, section openers and back cover use the night aurora from the existing deck. Reading pages are cream, with a navy rail down the left that shows the section, so you always know where you are.</p>
+  </div>
+  <div class="row pages">
+    <!-- RB1 cover -->
+    <figure><div class="frame"><div class="s navy">
+      <div class="au"><b style="--x:80%;--y:20%;--w:100%;--h:50%;--c:#5a3df2;--o:.8;--bl:100px"></b><b style="--x:10%;--y:70%;--w:80%;--h:50%;--c:#9f45e0;--o:.6;--bl:100px"></b><b style="--x:60%;--y:50%;--w:120%;--h:5%;--c:#f2c14e;--o:.5;--bl:30px;--r:-50deg"></b><b style="--x:30%;--y:20%;--w:50%;--h:30%;--c:#1f9fe8;--o:.5"></b></div>
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M900,180 C700,100 520,250 600,400 S860,540 700,680 S420,700 380,560" data-w="110" data-c="violet"></svg>
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M-80,480 C120,390 260,520 230,660" data-w="96" data-c="cyan"></svg>
+      <div class="abs wm" style="left:64px;top:60px"><img class="logo" alt="" style="width:50px"><div><b style="font-size:22px">VARA EXPO</b><b class="yr" style="font-size:22px">2026</b></div></div>
+      <div class="abs" style="left:64px;right:64px;top:800px;display:grid;gap:18px">
+        <p class="eb" style="font-size:12px;color:var(--green)">Post-expo report</p>
+        <h1 class="h" style="font-size:72px;line-height:.95">What happened at VARA&nbsp;2026</h1>
+        <p style="margin:6px 0 0;font:500 11px/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;opacity:.8">26–28 November 2026 · Central Park, Hulhumalé</p>
+      </div>
+    </div></div><figcaption>01 · Cover</figcaption></figure>
+
+    <!-- RB2 contents -->
+    <figure><div class="frame"><div class="s">
+      <div class="rail">
+        <div class="au"><b style="--x:50%;--y:20%;--w:160%;--h:40%;--c:#5a3df2;--o:.8"></b><b style="--x:50%;--y:80%;--w:160%;--h:30%;--c:#b14fe0;--o:.5"></b></div>
+        <span class="lbl">Contents</span>
+      </div>
+      <div class="abs" style="left:200px;right:60px;top:64px;display:grid;gap:40px">
+        <h2 class="h" style="font-size:56px">Contents</h2>
+        <div class="toc" style="border-top:2px solid var(--ink-on-light)">
+          <div><i style="color:var(--coral-ink)">01</i><b>By the numbers</b><span>04</span><em>Headline outcomes</em></div>
+          <div><i style="color:var(--coral-ink)">02</i><b>The three days</b><span>08</span><em>How the floor, stages and evenings ran</em></div>
+          <div><i style="color:var(--coral-ink)">03</i><b>The zones</b><span>12</span><em>Career, Education, Skills and Market</em></div>
+          <div><i style="color:var(--coral-ink)">04</i><b>Partners &amp; exhibitors</b><span>20</span><em>Who took part and what they said</em></div>
+          <div><i style="color:var(--coral-ink)">05</i><b>Visitor feedback</b><span>24</span><em>Survey results</em></div>
+          <div><i style="color:var(--coral-ink)">06</i><b>Looking ahead</b><span>28</span><em>Recommendations for 2027</em></div>
+        </div>
+      </div>
+      <div class="rf" style="left:200px;right:60px"><span>varaexpo.mv</span><span>02</span></div>
+    </div></div><figcaption>02 · Contents</figcaption></figure>
+
+    <!-- RB3 section opener -->
+    <figure><div class="frame"><div class="s navy">
+      <div class="au"><b style="--x:70%;--y:30%;--w:100%;--h:55%;--c:#6a3df0;--o:.8;--bl:100px"></b><b style="--x:20%;--y:80%;--w:90%;--h:45%;--c:#1f9fe8;--o:.5;--bl:100px"></b><b style="--x:50%;--y:45%;--w:120%;--h:5%;--c:#f2c14e;--o:.45;--bl:30px;--r:-35deg"></b></div>
+      <svg class="tb" viewBox="0 0 794 1123" data-d="M900,300 C700,200 540,360 620,500 S860,640 700,760" data-w="104" data-c="coral"></svg>
+      <div class="abs" style="left:64px;top:64px"><b class="big" style="font-size:160px;color:var(--coral)">03</b></div>
+      <div class="abs" style="left:64px;right:64px;top:840px;display:grid;gap:18px">
+        <h2 class="h" style="font-size:88px;letter-spacing:-.045em">The zones</h2>
+        <p style="margin:0;font-size:17px;line-height:1.45;opacity:.85;max-width:520px">Career, Education, Skills Experience and Market, reported one by one.</p>
+      </div>
+    </div></div><figcaption>03 · Section opener</figcaption></figure>
+
+    <!-- RB4 narrative -->
+    <figure><div class="frame"><div class="s">
+      <div class="rail">
+        <div class="au"><b style="--x:50%;--y:20%;--w:160%;--h:40%;--c:#5a3df2;--o:.8"></b><b style="--x:50%;--y:80%;--w:160%;--h:30%;--c:#b14fe0;--o:.5"></b></div>
+        <b class="n" style="color:var(--coral)">02</b><span class="lbl">The three days</span>
+      </div>
+      <div class="abs" style="left:200px;right:60px;top:64px;display:grid;gap:14px">
+        <h2 class="h" style="font-size:44px">The three days</h2>
+        <p style="margin:0;font-size:17px;line-height:1.45;opacity:.82">How the floor, the stages and the evening programme ran from Thursday to Saturday.</p>
+      </div>
+      <div class="abs" style="left:200px;right:60px;top:240px;font-size:13px;line-height:1.65;display:grid;gap:12px">
+        <p style="margin:0">Doors opened at 16:00 on Thursday 26 November to queues along the Central Park promenade. By the first evening the Career zone had taken more walk-in interviews than on any day of the 2025 edition.</p>
+        <p style="margin:0">The Skills bays ran live welding, marine engineering and culinary competitions on all three days, with heats on Friday and finals on the Saturday evening stage.</p>
+      </div>
+      <div class="ph" style="left:200px;right:60px;top:420px;height:260px;border-radius:4px"><span>Photo · Evening stage, Saturday</span></div>
+      <div class="abs" style="left:200px;right:60px;top:712px;display:grid;grid-template-columns:1fr 1fr;gap:26px;font-size:13px;line-height:1.65">
+        <p style="margin:0">Education sessions ran twice daily in Dhivehi and English. The livestreamed panels drew a peak online audience on Friday night.</p>
+        <p style="margin:0;font-size:20px;line-height:1.3;font-weight:700;color:var(--violet-ink)">“The best-attended skills event we've run in the Maldives.”</p>
+      </div>
+      <div class="rf" style="left:200px;right:60px"><span>varaexpo.mv</span><span>08</span></div>
+    </div></div><figcaption>04 · Narrative</figcaption></figure>
+
+    <!-- RB5 data -->
+    <figure><div class="frame"><div class="s">
+      <div class="rail">
+        <div class="au"><b style="--x:50%;--y:30%;--w:160%;--h:40%;--c:#7b3cf0;--o:.8"></b><b style="--x:50%;--y:85%;--w:160%;--h:30%;--c:#1f9fe8;--o:.5"></b></div>
+        <b class="n" style="color:var(--green)">03</b><span class="lbl">The zones</span>
+      </div>
+      <div class="abs" style="left:200px;right:60px;top:64px"><h2 class="h" style="font-size:44px">The zones, compared</h2></div>
+      <svg class="abs" viewBox="0 0 200 200" style="left:200px;top:170px;width:250px;height:250px;transform:rotate(-90deg)">
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#FF8A66" stroke-width="34" pathLength="100" stroke-dasharray="33.4 66.6"/>
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#6BFE96" stroke-width="34" pathLength="100" stroke-dasharray="26.4 73.6" stroke-dashoffset="-34"/>
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#1FE1FE" stroke-width="34" pathLength="100" stroke-dasharray="21.4 78.6" stroke-dashoffset="-61"/>
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#B66CF1" stroke-width="34" pathLength="100" stroke-dasharray="16.4 83.6" stroke-dashoffset="-83"/>
+      </svg>
+      <div class="abs" style="left:250px;top:263px;width:150px;text-align:center"><b class="num" style="font-size:34px;font-weight:900;letter-spacing:-.03em;display:block;line-height:1">32.4k</b><span class="note">visits</span></div>
+      <div class="abs" style="left:490px;top:200px;right:60px;display:grid;gap:12px;font-size:13px;line-height:1.5">
+        <p style="margin:0">Career drew the largest share of visits, while Market saw the longest average stay.</p>
+        <p style="margin:0;opacity:.78">Each zone is reported in full in the sections that follow.</p>
+      </div>
+      <div class="abs" style="left:200px;right:60px;top:470px">
+        <table class="ztab">
+          <thead><tr><th>Zone</th><th>Exhibitors</th><th>Visits</th><th>Applications</th></tr></thead>
+          <tbody>
+            <tr><td><i style="background:var(--coral)"></i>Career</td><td>64</td><td>11,020</td><td>488</td></tr>
+            <tr><td><i style="background:var(--green)"></i>Education</td><td>52</td><td>8,750</td><td>—</td></tr>
+            <tr><td><i style="background:var(--cyan)"></i>Skills</td><td>38</td><td>7,130</td><td>124</td></tr>
+            <tr><td><i style="background:var(--violet)"></i>Market</td><td>32</td><td>5,500</td><td>—</td></tr>
+            <tr><td style="font-weight:800">Total</td><td style="font-weight:800">186</td><td style="font-weight:800">32,400</td><td style="font-weight:800">612</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="abs note" style="left:200px;right:60px;top:800px">Sample figures for layout only.</p>
+      <div class="rf" style="left:200px;right:60px"><span>varaexpo.mv</span><span>14</span></div>
+    </div></div><figcaption>05 · Data</figcaption></figure>
+
+    <!-- RB6 back cover -->
+    <figure><div class="frame"><div class="s navy">
+      <div class="au"><b style="--x:50%;--y:35%;--w:110%;--h:50%;--c:#5a3df2;--o:.75;--bl:110px"></b><b style="--x:50%;--y:65%;--w:90%;--h:30%;--c:#b14fe0;--o:.5;--bl:100px"></b></div>
+      <img class="logo abs" alt="" style="left:247px;top:300px;width:300px">
+      <div class="abs" style="left:64px;right:64px;top:650px;text-align:center;display:grid;gap:10px;justify-items:center">
+        <b style="font-size:34px;font-weight:800;letter-spacing:-.01em;line-height:.95">VARA EXPO<br><span style="color:var(--coral);font-weight:900">2026</span></b>
+        <span style="font:500 11px/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-top:8px">National Skills &amp; Career Expo · Maldives</span>
+      </div>
+      <div class="abs" style="left:64px;right:64px;bottom:64px;border-top:1px solid rgba(246,241,230,.4);padding-top:18px;display:flex;justify-content:space-between;gap:20px;font:500 10.5px/1.7 var(--f-mono);letter-spacing:.06em;text-transform:uppercase">
+        <span style="opacity:.85">Organised by the Ministry of Homeland<br>Security, Labour and Technology</span>
+        <span style="text-align:right;opacity:.85">varaexpo.mv<br>hello@varaexpo.mv</span>
+      </div>
+    </div></div><figcaption>06 · Back cover</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ Report C · Daybreak ============ -->
+<section class="dir">
+  <div class="dir-head">
+    <span class="dir-tag">REPORT C</span><h3>Daybreak <span style="font:500 12px/1 var(--f-mono);color:var(--green);letter-spacing:.08em;vertical-align:4px;margin-left:8px">NEW</span></h3>
+    <p><b>The report version of Deck B.</b> Pastel aurora on paper, the logo mark as the cover hero, and frosted panels holding the numbers and contents. Photos sit in rounded frames with a soft glow behind them. It's the lightest and friendliest of the three, suited to a public-facing summary.</p>
+  </div>
+  <div class="row pages">
+    <!-- RC1 cover -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:78%;--y:22%;--w:80%;--h:50%;--c:#FF8A66;--o:.5;--bl:100px"></b><b style="--x:100%;--y:6%;--w:50%;--h:35%;--c:#B66CF1;--o:.5"></b><b style="--x:22%;--y:10%;--w:50%;--h:30%;--c:#1FE1FE;--o:.3"></b><b style="--x:90%;--y:55%;--w:45%;--h:25%;--c:#B66CF1;--o:.35"></b><b style="--x:20%;--y:100%;--w:70%;--h:30%;--c:#6BFE96;--o:.25"></b></div>
+      <img class="logo abs" alt="" style="left:330px;top:84px;width:400px">
+      <div class="abs" style="left:64px;right:64px;top:560px;display:grid;gap:20px">
+        <p class="eb" style="font-size:12px;color:var(--violet-ink)">Post-expo report · December 2026</p>
+        <h1 class="h" style="font-size:70px;line-height:.95">VARA Expo 2026, in review</h1>
+        <p style="margin:0;font:500 11px/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;opacity:.8">26–28 November 2026 · Central Park, Hulhumalé</p>
+      </div>
+      <div class="abs glass" style="left:64px;right:64px;top:850px;padding:26px 30px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <div style="display:grid;gap:6px"><b class="num big" style="font-size:48px">32,400</b><span style="font-size:12.5px;opacity:.8">visitors over three days</span></div>
+        <div style="display:grid;gap:6px"><b class="num big" style="font-size:48px;color:var(--coral-ink)">186</b><span style="font-size:12.5px;opacity:.8">exhibitors on the floor</span></div>
+        <div style="display:grid;gap:6px"><b class="num big" style="font-size:48px;color:var(--violet-ink)">58</b><span style="font-size:12.5px;opacity:.8">hired on the spot</span></div>
+      </div>
+      <div class="rf"><span>Sample figures</span><span>varaexpo.mv</span></div>
+    </div></div><figcaption>01 · Cover</figcaption></figure>
+
+    <!-- RC2 contents -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:0%;--y:100%;--w:80%;--h:45%;--c:#FF8A66;--o:.45;--bl:100px"></b><b style="--x:100%;--y:90%;--w:60%;--h:35%;--c:#B66CF1;--o:.4"></b></div>
+      <div class="rh"><span>VARA Expo 2026 · in review</span><span>Contents</span></div>
+      <div class="abs" style="left:64px;right:64px;top:100px"><h2 class="h" style="font-size:56px">Contents</h2></div>
+      <div class="abs glass toc" style="left:64px;right:64px;top:200px;padding:6px 32px">
+        <div><i style="color:var(--coral-ink)">01</i><b>By the numbers</b><span>04</span><em>Headline outcomes</em></div>
+        <div><i style="color:var(--violet-ink)">02</i><b>The three days</b><span>08</span><em>How the floor, stages and evenings ran</em></div>
+        <div><i style="color:var(--green-ink)">03</i><b>The zones</b><span>12</span><em>Career, Education, Skills and Market</em></div>
+        <div><i style="color:var(--cyan-ink)">04</i><b>Partners &amp; exhibitors</b><span>20</span><em>Who took part and what they said</em></div>
+        <div><i style="color:var(--coral-ink)">05</i><b>Visitor feedback</b><span>24</span><em>Survey results</em></div>
+        <div style="border-bottom:0"><i style="color:var(--violet-ink)">06</i><b>Looking ahead</b><span>28</span><em>Recommendations for 2027</em></div>
+      </div>
+      <div class="abs" style="left:64px;right:64px;top:820px;display:grid;grid-template-columns:1fr 1fr;gap:28px;font-size:12.5px;line-height:1.62">
+        <p style="margin:0;font-size:15px;line-height:1.45;font-weight:600">VARA Expo is the Maldives' national skills and career expo, organised by the Ministry of Homeland Security, Labour and Technology.</p>
+        <p style="margin:0;opacity:.82">This report covers the 2026 edition, held 26–28 November at Central Park, Hulhumalé.</p>
+      </div>
+      <div class="rf"><span>varaexpo.mv</span><span>02</span></div>
+    </div></div><figcaption>02 · Contents</figcaption></figure>
+
+    <!-- RC3 section opener -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:20%;--y:12%;--w:60%;--h:35%;--c:#1FE1FE;--o:.4"></b><b style="--x:85%;--y:45%;--w:60%;--h:40%;--c:#B66CF1;--o:.45"></b><b style="--x:50%;--y:58%;--w:90%;--h:15%;--c:#FF8A66;--o:.4"></b></div>
+      <div class="ph" style="left:64px;right:64px;top:72px;height:560px;border-radius:28px"><span>Photo · Career zone, Friday</span></div>
+      <div class="abs" style="left:64px;right:64px;top:720px;display:grid;gap:18px">
+        <span class="secno" style="color:var(--green-ink)">Section 03</span>
+        <h2 class="h" style="font-size:96px;letter-spacing:-.045em">The zones</h2>
+        <p style="margin:0;font-size:17px;line-height:1.45;opacity:.82;max-width:520px">Career, Education, Skills Experience and Market, reported one by one.</p>
+      </div>
+      <div class="rf"><span>varaexpo.mv</span><span>12</span></div>
+    </div></div><figcaption>03 · Section opener</figcaption></figure>
+
+    <!-- RC4 narrative -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:100%;--y:0%;--w:60%;--h:30%;--c:#B66CF1;--o:.35"></b><b style="--x:0%;--y:100%;--w:60%;--h:25%;--c:#FF8A66;--o:.3"></b></div>
+      <div class="rh"><span>VARA Expo 2026 · in review</span><span>The three days</span></div>
+      <div class="abs" style="left:64px;right:64px;top:96px;display:grid;gap:14px">
+        <span class="secno" style="color:var(--violet-ink)">Section 02</span>
+        <h2 class="h" style="font-size:44px">The three days</h2>
+        <p style="margin:0;font-size:17px;line-height:1.45;opacity:.82;max-width:560px">How the floor, the stages and the evening programme ran from Thursday to Saturday.</p>
+      </div>
+      <div class="ph" style="left:64px;right:64px;top:280px;height:240px;border-radius:22px"><span>Photo · Skills bay, day two</span></div>
+      <div class="abs cols2" style="left:64px;right:64px;top:552px">
+        <p>Doors opened at 16:00 on Thursday 26 November to queues along the Central Park promenade. By the first evening the Career zone had taken more walk-in interviews than on any day of the 2025 edition.</p>
+        <p>The Skills bays ran live welding, marine engineering and culinary competitions on all three days, with heats on Friday and finals on the Saturday evening stage.</p>
+        <p>Education sessions ran twice daily in Dhivehi and English. The livestreamed panels drew a peak online audience on Friday night, when the AI and future-of-work panel was on.</p>
+        <p>Saturday was the busiest day, with family traffic peaking after 19:00 for the evening stage.</p>
+      </div>
+      <div class="abs glass" style="left:64px;right:64px;top:830px;padding:26px 30px;display:grid;gap:10px">
+        <p style="margin:0;font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:var(--violet-ink)">“I came for the welding demo and left with an interview on Monday.”</p>
+        <span style="font:500 10.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.7">Visitor, aged 19 · Skills Experience zone</span>
+      </div>
+      <div class="rf"><span>varaexpo.mv</span><span>08</span></div>
+    </div></div><figcaption>04 · Narrative</figcaption></figure>
+
+    <!-- RC5 data -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:20%;--y:40%;--w:70%;--h:35%;--c:#FF8A66;--o:.35;--bl:100px"></b><b style="--x:85%;--y:45%;--w:60%;--h:35%;--c:#B66CF1;--o:.35;--bl:100px"></b><b style="--x:50%;--y:85%;--w:70%;--h:25%;--c:#1FE1FE;--o:.25"></b></div>
+      <div class="rh"><span>VARA Expo 2026 · in review</span><span>By the numbers</span></div>
+      <div class="abs" style="left:64px;right:64px;top:96px;display:grid;gap:14px">
+        <span class="secno" style="color:var(--coral-ink)">Section 01</span>
+        <h2 class="h" style="font-size:44px">By the numbers</h2>
+      </div>
+      <div class="abs" style="left:64px;right:64px;top:210px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div class="glass" style="border-radius:16px;padding:18px;display:grid;gap:6px"><b class="num big" style="font-size:40px">32,400</b><span style="font-size:12px;opacity:.8">visitors over three days</span></div>
+        <div class="glass" style="border-radius:16px;padding:18px;display:grid;gap:6px"><b class="num big" style="font-size:40px">186</b><span style="font-size:12px;opacity:.8">exhibitors, public and private</span></div>
+        <div class="glass" style="border-radius:16px;padding:18px;display:grid;gap:6px"><b class="num big" style="font-size:40px">612</b><span style="font-size:12px;opacity:.8">job applications submitted</span></div>
+        <div class="glass" style="border-radius:16px;padding:18px;display:grid;gap:6px"><b class="num big" style="font-size:40px;color:var(--coral-ink)">58</b><span style="font-size:12px;opacity:.8">hired on the spot</span></div>
+        <div class="glass" style="border-radius:16px;padding:18px;display:grid;gap:6px"><b class="num big" style="font-size:40px;color:var(--violet-ink)">44</b><span style="font-size:12px;opacity:.8">scholarships awarded</span></div>
+        <div class="glass" style="border-radius:16px;padding:18px;display:grid;gap:6px"><b class="num big" style="font-size:40px">1,100+</b><span style="font-size:12px;opacity:.8">courses showcased</span></div>
+      </div>
+      <div class="abs glass" style="left:64px;right:64px;top:510px;padding:24px 28px;display:grid;gap:16px">
+        <span class="secno">Visitors by day</span>
+        <div class="bars">
+          <div class="r"><span>Thu 26 Nov</span><i style="width:58%;background:var(--ink-on-light)"></i><em>8,900</em></div>
+          <div class="r"><span>Fri 27 Nov</span><i style="width:76%;background:var(--ink-on-light)"></i><em>10,700</em></div>
+          <div class="r"><span>Sat 28 Nov</span><i style="width:92%;background:var(--coral)"></i><em>12,800</em></div>
+        </div>
+      </div>
+      <div class="abs" style="left:64px;right:64px;top:740px;display:grid;gap:14px">
+        <span class="secno">Visits by zone</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:14px;font-weight:700">
+          <span style="background:var(--coral);padding:10px 16px;border-radius:999px">Career · 34%</span>
+          <span style="background:var(--green);padding:10px 16px;border-radius:999px">Education · 27%</span>
+          <span style="background:var(--cyan);padding:10px 16px;border-radius:999px">Skills · 22%</span>
+          <span style="background:var(--violet);padding:10px 16px;border-radius:999px">Market · 17%</span>
+        </div>
+      </div>
+      <p class="abs note" style="left:64px;right:64px;top:880px">Sample figures for layout only.</p>
+      <div class="rf"><span>varaexpo.mv</span><span>05</span></div>
+    </div></div><figcaption>05 · Data</figcaption></figure>
+
+    <!-- RC6 back cover -->
+    <figure><div class="frame"><div class="s paper">
+      <div class="au"><b style="--x:50%;--y:38%;--w:90%;--h:45%;--c:#FF8A66;--o:.45;--bl:110px"></b><b style="--x:75%;--y:30%;--w:50%;--h:30%;--c:#B66CF1;--o:.4"></b><b style="--x:28%;--y:30%;--w:45%;--h:25%;--c:#1FE1FE;--o:.3"></b></div>
+      <img class="logo abs" alt="" style="left:247px;top:280px;width:300px">
+      <div class="abs" style="left:64px;right:64px;top:640px;text-align:center;display:grid;gap:10px;justify-items:center">
+        <b style="font-size:34px;font-weight:800;letter-spacing:-.01em;line-height:.95">VARA EXPO<br><span style="color:var(--coral-ink);font-weight:900">2026</span></b>
+        <span style="font:500 11px/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:8px">National Skills &amp; Career Expo · Maldives</span>
+      </div>
+      <div class="abs glass" style="left:64px;right:64px;bottom:64px;padding:20px 26px;display:flex;justify-content:space-between;gap:20px;font:500 10.5px/1.7 var(--f-mono);letter-spacing:.06em;text-transform:uppercase">
+        <span>Organised by the Ministry of Homeland<br>Security, Labour and Technology</span>
+        <span style="text-align:right">varaexpo.mv<br>hello@varaexpo.mv</span>
+      </div>
+    </div></div><figcaption>06 · Back cover</figcaption></figure>
+  </div>
+</section>
+
+<footer class="end">
+  <span>Tubes are drawn by the Line Shader engine with the brand's own colour ramps. Glows are stand-ins for Weave Gradients renders. The mark is the official render.</span>
+  <span>Type: Hanken Grotesk and JetBrains Mono, both free fonts available in Canva. Round 1 is in this page's version history.</span>
+</footer>
+</div>
+
+<script>
+/*__ENGINE__*/
+
+(function(){
+  const MARK = '__MARK__';
+  document.querySelectorAll('img.logo').forEach(i => i.src = MARK);
+
+  TUBE.segs = 96; TUBE.stops = 9; TUBE.smooth = 3;
+  const RAMPS = { coral: STROKES.coral.colors, green: STROKES.green.colors, cyan: STROKES.cyan.colors, violet: STROKES.violet.colors };
+  const LA = 150 * Math.PI / 180;
+  document.querySelectorAll('svg.tb').forEach(svg => {
+    try { paintTube(svg, svg.dataset.d, +svg.dataset.w, RAMPS[svg.dataset.c], LA).reveal(1, 1); } catch (e) {}
+  });
+
+  /* scale each fixed-size slide/page to its frame */
+  const fit = f => { const s = f.firstElementChild; s.style.transform = 'scale(' + (f.clientWidth / s.offsetWidth) + ')'; };
+  const ro = new ResizeObserver(es => es.forEach(e => fit(e.target)));
+  document.querySelectorAll('.frame').forEach(f => { fit(f); ro.observe(f); });
+})();
+</script>
