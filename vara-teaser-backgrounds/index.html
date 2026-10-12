@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <title>Teaser backgrounds — VARA Expo 2026</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Animated zone backgrounds for the VARA Expo 2026 teaser: the full sequence with wipes, a loop per zone, and the wipe mattes.">
+<meta name="description" content="Animated backgrounds for the VARA Expo 2026 teaser, intro to outro: the whole film as one plate, a loop per scene, and the wipe mattes. 30 fps.">
 <style>
   :root{
     --bg:#0B1020; --panel:#121a2e; --line:#223049;
@@ -27,6 +27,8 @@
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
         display:flex;flex-direction:column}
   .card.hero{grid-column:1/-1}
+  .new{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#14100e;background:var(--accent2);border-radius:4px;padding:.05rem .35rem;margin-left:.35rem;vertical-align:2px}
+  tr.sec td{color:var(--accent2);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding-top:1rem}
   video{display:block;width:100%;aspect-ratio:16/9;background:#0e1527;border-bottom:1px solid var(--line)}
   .body{padding:1rem 1.15rem 1.15rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
   .body h3{margin:0;font-size:1.05rem}
@@ -60,93 +62,158 @@
 <div class="wrap">
   <a class="back" href="../">← Brand hub</a>
   <h1>Teaser backgrounds</h1>
-  <p class="lede">Animated zone backgrounds for the VARA Expo 2026 teaser, ready for After Effects.
-     No text, icons or road. Those go on top.</p>
-  <p class="spec">1920×1080 · 25 fps · Rec.709 · H.264, high bitrate</p>
+  <p class="lede">Animated backgrounds for the VARA Expo 2026 teaser, ready for After Effects. They now run intro to outro:
+     the three YOUR ___ beats, the logo, the five zones, the tagline and the close.
+     No text, logo, tubes or road. Those go on top.</p>
+  <p class="spec">1920×1080 · <strong>30 fps</strong> to match the cut · Rec.709 · H.264, high bitrate</p>
 
-  <h2>Full sequence</h2>
-  <p>All five zones joined by soft fabric wipes. Drop it in at frame 0 and build on top.</p>
+  <h2>Whole film</h2>
+  <p>One plate for the whole film, timed to the 37 s cut. Every wipe sits on that cut’s own transition, so the tube sweeps and
+     road moves cover it. Drop it in at frame 0 and build on top.</p>
   <div class="grid">
     <article class="card hero">
-      <video controls muted playsinline preload="none" poster="posters/full.jpg" src="files/vara-zones-backgrounds-with-wipes_1080p25.mp4"></video>
+      <video controls muted playsinline preload="none" poster="posters/full.jpg" src="files/vara-teaser-backgrounds-full_1080p30.mp4"></video>
       <div class="body">
         <span class="tag">Start here</span>
-        <h3>Zone backgrounds with wipes <span class="spec">· 15.5 s · 25 MB</span></h3>
-        <p>Career → Education → Skills → Market wipe in from the right; the summary comes down from the top.
-           Each wipe is 22 frames (summary 28), ease in-out, with a soft lit crest.</p>
-        <div class="links"><a class="btn primary" href="files/vara-zones-backgrounds-with-wipes_1080p25.mp4" download>Download</a></div>
+        <h3>Intro → zones → outro → partner cards <span class="spec">· 36.9 s · 1107 frames, the whole cut</span></h3>
+        <p>It opens on the close’s dark ground, so the film starts and ends in the same place. The intro beats swap in 6 frames,
+           under the tubes. The zones wipe in from the right over 26 frames. Summary and the close fall from the top over 32.
+           At the end, the close’s glow rises into a sunrise and floods to the partner cards’ cream (#f4eede).
+           It lands at frame 984, exactly where the cards start, and holds cream to the end.</p>
+        <div class="links"><a class="btn primary" href="files/vara-teaser-backgrounds-full_1080p30.mp4" download>Download</a></div>
       </div>
     </article>
   </div>
 
-  <h2>Zone loops</h2>
-  <p>One seamless 10 s loop per zone, for building or retiming the wipes yourself. All four zones are matched
-     in brightness, so a wipe between them never pumps.</p>
+  <h2>Intro</h2>
+  <p>The intro uses the zone colours, so it previews the journey. The middle stays calm for the centred word and the logo, and the light
+     lives at the edges. Each beat carries a hint of the next one’s colour on the right.</p>
   <div class="grid">
     <article class="card">
-      <video controls muted loop playsinline preload="none" poster="posters/career.jpg" src="files/01-career-background-loop-10s_1080p25.mp4"></video>
+      <video controls muted loop playsinline preload="none" poster="posters/career_beat.jpg" src="files/intro-1-career-beat-background-loop-10s_1080p30.mp4"></video>
+      <div class="body"><span class="tag">Intro · 1</span><h3>YOUR Career. <span class="new">New</span></h3><p>Coral from the top-left, rose bottom-right, a calm plum centre for the word. A hint of blue on the right leads to Skills.</p>
+        <div class="links"><a class="btn primary" href="files/intro-1-career-beat-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/skills_beat.jpg" src="files/intro-2-skills-beat-background-loop-10s_1080p30.mp4"></video>
+      <div class="body"><span class="tag">Intro · 2</span><h3>YOUR Skills. <span class="new">New</span></h3><p>The Skills zone’s blue with a cyan fold and green top-left. Violet on the right leads to Future.</p>
+        <div class="links"><a class="btn primary" href="files/intro-2-skills-beat-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/logo.jpg" src="files/intro-3-future-and-logo-background-loop-10s_1080p30.mp4"></video>
+      <div class="body"><span class="tag">Intro · 3</span><h3>YOUR Future. + logo <span class="new">New</span></h3><p>Violet, with the logo’s four strand colours glowing low round the edge: green, cyan, pink, violet. Deep centre for the 3D logo and lockup.</p>
+        <div class="links"><a class="btn primary" href="files/intro-3-future-and-logo-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
+    </article>
+  </div>
+
+  <h2>Zones</h2>
+  <p>The same five zones as before, re-rendered at 30 fps. All bright scenes are matched to Career’s brightness, so a wipe
+     between them never pumps.</p>
+  <div class="grid">
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/career.jpg" src="files/01-career-background-loop-10s_1080p30.mp4"></video>
       <div class="body"><span class="tag">01</span><h3>Career</h3><p>Coral and plum, teal-green fold, blue-violet glow.</p>
-        <div class="links"><a class="btn primary" href="files/01-career-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+        <div class="links"><a class="btn primary" href="files/01-career-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
     </article>
     <article class="card">
-      <video controls muted loop playsinline preload="none" poster="posters/education.jpg" src="files/02-education-background-loop-10s_1080p25.mp4"></video>
+      <video controls muted loop playsinline preload="none" poster="posters/education.jpg" src="files/02-education-background-loop-10s_1080p30.mp4"></video>
       <div class="body"><span class="tag">02</span><h3>Education</h3><p>Green rising from the bottom-right, warm orange glow.</p>
-        <div class="links"><a class="btn primary" href="files/02-education-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+        <div class="links"><a class="btn primary" href="files/02-education-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
     </article>
     <article class="card">
-      <video controls muted loop playsinline preload="none" poster="posters/skills.jpg" src="files/03-skills-background-loop-10s_1080p25.mp4"></video>
+      <video controls muted loop playsinline preload="none" poster="posters/skills.jpg" src="files/03-skills-background-loop-10s_1080p30.mp4"></video>
       <div class="body"><span class="tag">03</span><h3>Skills Experience</h3><p>Blue with a long cyan fold, green and violet glows.</p>
-        <div class="links"><a class="btn primary" href="files/03-skills-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+        <div class="links"><a class="btn primary" href="files/03-skills-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
     </article>
     <article class="card">
-      <video controls muted loop playsinline preload="none" poster="posters/market.jpg" src="files/04-market-background-loop-10s_1080p25.mp4"></video>
+      <video controls muted loop playsinline preload="none" poster="posters/market.jpg" src="files/04-market-background-loop-10s_1080p30.mp4"></video>
       <div class="body"><span class="tag">04</span><h3>Market</h3><p>Violet light from the top, orange and blue glows.</p>
-        <div class="links"><a class="btn primary" href="files/04-market-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+        <div class="links"><a class="btn primary" href="files/04-market-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
     </article>
     <article class="card">
-      <video controls muted loop playsinline preload="none" poster="posters/summary.jpg" src="files/05-summary-background-loop-10s_1080p25.mp4"></video>
+      <video controls muted loop playsinline preload="none" poster="posters/summary.jpg" src="files/05-summary-background-loop-10s_1080p30.mp4"></video>
       <div class="body"><span class="tag">05</span><h3>Summary</h3><p>Deep navy with teal, violet and amber light on the right.</p>
-        <div class="links"><a class="btn primary" href="files/05-summary-background-loop-10s_1080p25.mp4" download>Download</a></div></div>
+        <div class="links"><a class="btn primary" href="files/05-summary-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
+    </article>
+  </div>
+
+  <h2>Outro</h2>
+  <p>After the tagline the film darkens and warms, so the logo and date are the brightest things on screen. Then the warm glow rises
+     and floods the frame with cream for the partner cards. Use wipe 11’s matte to reveal the cards comp along that edge.
+     Bring the card content in after frame 984, so the crest doesn’t ghost through the soft edge.</p>
+  <div class="grid">
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/tagline.jpg" src="files/outro-1-tagline-background-loop-10s_1080p30.mp4"></video>
+      <div class="body"><span class="tag">Outro · 1</span><h3>Connecting Talent with Opportunities <span class="new">New</span></h3><p>Two folds reach in from the lower corners, coral from the left and cyan from the right, and nearly meet under the line.</p>
+        <div class="links"><a class="btn primary" href="files/outro-1-tagline-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
+    </article>
+    <article class="card">
+      <video controls muted loop playsinline preload="none" poster="posters/close.jpg" src="files/outro-2-close-background-loop-10s_1080p30.mp4"></video>
+      <div class="body"><span class="tag">Outro · 2</span><h3>See you soon + date <span class="new">New</span></h3><p>Deep plum-navy with a restrained coral and amber glow low in the frame, under the date. A dark, calm top for the logo. The film ends warmer than anything before it. Also the pre-roll.</p>
+        <div class="links"><a class="btn primary" href="files/outro-2-close-background-loop-10s_1080p30.mp4" download>Download</a></div></div>
     </article>
   </div>
 
   <h2>Wipe mattes</h2>
-  <p>The same wipes as full-length luma mattes: black before the wipe, white after. Drop one in at frame 0 and
-     use it as a track matte over two loops to move or stretch that wipe.</p>
+  <p>Every wipe as a full-length luma matte: black before the wipe, white after. Drop one in at frame 0 and use it as a
+     track matte over two loops to move or stretch that wipe.</p>
   <div class="mattes">
-    <div class="matte"><span>1 · Career → Education<small>wipe frames 54–75</small></span><a class="btn" href="files/wipe-1-career-to-education_frames-54-75.mp4" download>Download</a></div>
-    <div class="matte"><span>2 · Education → Skills<small>wipe frames 130–151</small></span><a class="btn" href="files/wipe-2-education-to-skills_frames-130-151.mp4" download>Download</a></div>
-    <div class="matte"><span>3 · Skills → Market<small>wipe frames 206–227</small></span><a class="btn" href="files/wipe-3-skills-to-market_frames-206-227.mp4" download>Download</a></div>
-    <div class="matte"><span>4 · Market → Summary<small>wipe frames 283–310</small></span><a class="btn" href="files/wipe-4-market-to-summary_frames-283-310.mp4" download>Download</a></div>
+    <div class="matte"><span>1 · Close → Career beat<small>wipe frames 24–29</small></span><a class="btn" href="files/wipe-mattes/wipe-01-close-to-career-beat_frames-24-29.mp4" download>Download</a></div>
+    <div class="matte"><span>2 · Career beat → Skills beat<small>wipe frames 63–68</small></span><a class="btn" href="files/wipe-mattes/wipe-02-career-beat-to-skills-beat_frames-63-68.mp4" download>Download</a></div>
+    <div class="matte"><span>3 · Skills beat → Logo<small>wipe frames 98–103</small></span><a class="btn" href="files/wipe-mattes/wipe-03-skills-beat-to-logo_frames-98-103.mp4" download>Download</a></div>
+    <div class="matte"><span>4 · Logo → Career<small>wipe frames 287–312</small></span><a class="btn" href="files/wipe-mattes/wipe-04-logo-to-career_frames-287-312.mp4" download>Download</a></div>
+    <div class="matte"><span>5 · Career → Education<small>wipe frames 342–367</small></span><a class="btn" href="files/wipe-mattes/wipe-05-career-to-education_frames-342-367.mp4" download>Download</a></div>
+    <div class="matte"><span>6 · Education → Skills<small>wipe frames 412–437</small></span><a class="btn" href="files/wipe-mattes/wipe-06-education-to-skills_frames-412-437.mp4" download>Download</a></div>
+    <div class="matte"><span>7 · Skills → Market<small>wipe frames 483–508</small></span><a class="btn" href="files/wipe-mattes/wipe-07-skills-to-market_frames-483-508.mp4" download>Download</a></div>
+    <div class="matte"><span>8 · Market → Summary<small>wipe frames 560–591</small></span><a class="btn" href="files/wipe-mattes/wipe-08-market-to-summary_frames-560-591.mp4" download>Download</a></div>
+    <div class="matte"><span>9 · Summary → Tagline<small>wipe frames 692–717</small></span><a class="btn" href="files/wipe-mattes/wipe-09-summary-to-tagline_frames-692-717.mp4" download>Download</a></div>
+    <div class="matte"><span>10 · Tagline → Close<small>wipe frames 766–797</small></span><a class="btn" href="files/wipe-mattes/wipe-10-tagline-to-close_frames-766-797.mp4" download>Download</a></div>
+    <div class="matte"><span>11 · Close → Cream <span class="new">New</span><small>wipe frames 952–983 · sunrise into the partner cards</small></span><a class="btn" href="files/wipe-mattes/wipe-11-close-to-cream_frames-952-983.mp4" download>Download</a></div>
   </div>
 
   <h2>Using them in After Effects</h2>
   <ol class="steps">
-    <li><strong>Quickest:</strong> put the full sequence in a 1920×1080, 25 fps comp at frame 0. Titles and icons
-        land on each zone's hold; leave the wipes clear of type.</li>
-    <li><strong>To retime:</strong> stack two zone loops, put that transition's matte above the incoming one and set it
-        as a Luma Matte, then slide or time-stretch the matte. The loops are seamless, so extend them as far as you need.</li>
-    <li>Keep the comp at 25 fps. Converting frame rates later will make the drift judder.</li>
+    <li><strong>Quickest:</strong> put the whole-film plate in a 1920×1080, 30 fps comp at frame 0, under everything else.</li>
+    <li><strong>To retime:</strong> stack two loops, put that transition’s matte above the incoming one and set it as a Luma
+        Matte, then slide or time-stretch the matte. The loops are seamless, so extend them as far as you need.</li>
+    <li>Keep the comp at 30 fps. Converting the frame rate will make the drift judder.</li>
   </ol>
 
   <h2>Timing</h2>
-  <p>Frames at 25 fps; timecode is seconds:frames.</p>
+  <p>Frames at 30 fps; timecode is seconds:frames.</p>
   <div class="table"><table>
     <tr><th>Section</th><th>Frames</th><th>Timecode</th><th>Wipe</th></tr>
-    <tr><td>Career</td><td class="n">0–51</td><td class="n">00:00–02:01</td><td></td></tr>
-    <tr><td>Career → Education</td><td class="n">52–75</td><td class="n">02:02–03:00</td><td class="n">54–75</td></tr>
-    <tr><td>Education</td><td class="n">76–127</td><td class="n">03:01–05:02</td><td></td></tr>
-    <tr><td>Education → Skills</td><td class="n">128–151</td><td class="n">05:03–06:01</td><td class="n">130–151</td></tr>
-    <tr><td>Skills Experience</td><td class="n">152–203</td><td class="n">06:02–08:03</td><td></td></tr>
-    <tr><td>Skills → Market</td><td class="n">204–227</td><td class="n">08:04–09:02</td><td class="n">206–227</td></tr>
-    <tr><td>Market</td><td class="n">228–279</td><td class="n">09:03–11:04</td><td></td></tr>
-    <tr><td>Market → Summary</td><td class="n">280–311</td><td class="n">11:05–12:11</td><td class="n">283–310</td></tr>
-    <tr><td>Summary</td><td class="n">312–386</td><td class="n">12:12–15:11</td><td></td></tr>
+    <tr class="sec"><td colspan="4">Intro</td></tr>
+    <tr><td>Pre-roll (close)</td><td class="n">0–23</td><td class="n">00:00–00:23</td><td></td></tr>
+    <tr><td>Close → Career beat</td><td class="n">24–29</td><td class="n">00:24–00:29</td><td class="n">6 f</td></tr>
+    <tr><td>Career beat</td><td class="n">30–62</td><td class="n">01:00–02:02</td><td></td></tr>
+    <tr><td>Career beat → Skills beat</td><td class="n">63–68</td><td class="n">02:03–02:08</td><td class="n">6 f</td></tr>
+    <tr><td>Skills beat</td><td class="n">69–97</td><td class="n">02:09–03:07</td><td></td></tr>
+    <tr><td>Skills beat → Logo</td><td class="n">98–103</td><td class="n">03:08–03:13</td><td class="n">6 f</td></tr>
+    <tr><td>Future + logo</td><td class="n">104–286</td><td class="n">03:14–09:16</td><td></td></tr>
+    <tr class="sec"><td colspan="4">Zones</td></tr>
+    <tr><td>Logo → Career</td><td class="n">287–312</td><td class="n">09:17–10:12</td><td class="n">26 f</td></tr>
+    <tr><td>Career</td><td class="n">313–341</td><td class="n">10:13–11:11</td><td></td></tr>
+    <tr><td>Career → Education</td><td class="n">342–367</td><td class="n">11:12–12:07</td><td class="n">26 f</td></tr>
+    <tr><td>Education</td><td class="n">368–411</td><td class="n">12:08–13:21</td><td></td></tr>
+    <tr><td>Education → Skills</td><td class="n">412–437</td><td class="n">13:22–14:17</td><td class="n">26 f</td></tr>
+    <tr><td>Skills Experience</td><td class="n">438–482</td><td class="n">14:18–16:02</td><td></td></tr>
+    <tr><td>Skills → Market</td><td class="n">483–508</td><td class="n">16:03–16:28</td><td class="n">26 f</td></tr>
+    <tr><td>Market</td><td class="n">509–559</td><td class="n">16:29–18:19</td><td></td></tr>
+    <tr><td>Market → Summary</td><td class="n">560–591</td><td class="n">18:20–19:21</td><td class="n">32 f</td></tr>
+    <tr><td>Summary</td><td class="n">592–691</td><td class="n">19:22–23:01</td><td></td></tr>
+    <tr class="sec"><td colspan="4">Outro</td></tr>
+    <tr><td>Summary → Tagline</td><td class="n">692–717</td><td class="n">23:02–23:27</td><td class="n">26 f</td></tr>
+    <tr><td>Tagline</td><td class="n">718–765</td><td class="n">23:28–25:15</td><td></td></tr>
+    <tr><td>Tagline → Close</td><td class="n">766–797</td><td class="n">25:16–26:17</td><td class="n">32 f</td></tr>
+    <tr><td>Close</td><td class="n">798–951</td><td class="n">26:18–31:21</td><td></td></tr>
+    <tr><td>Close → Cream (sunrise)</td><td class="n">952–983</td><td class="n">31:22–32:23</td><td class="n">32 f</td></tr>
+    <tr><td>Cream (partner cards)</td><td class="n">984–1106</td><td class="n">32:24–36:26</td><td></td></tr>
   </table></div>
   <p><a href="files/README.txt" download>README.txt</a> has the same notes as plain text.</p>
 
   <footer>
     Made with <a href="https://novas-mv.github.io/weave-gradients/">Weave Gradients</a>.
-    Source: <a href="https://github.com/novas-mv/weave-gradients/tree/claude/confident-turing-9dcec1/motion">weave-gradients/motion</a>.
+    The 25 fps zone-only package from the first round is in this page’s git history.
   </footer>
 </div>
