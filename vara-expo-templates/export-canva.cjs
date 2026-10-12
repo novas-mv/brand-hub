@@ -112,10 +112,10 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;
       p.data.photos.forEach((ph, k) => els.push(
         `<img src="${url(`p${p.n}-photo${k + 1}.png`)}" alt="Photo placeholder" style="left:${px(ph.x)};top:${px(ph.y)};width:${px(ph.w)};height:${px(ph.h)}">`));
       for (const it of p.data.items) {
-        if (it.k === 'rect') els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};height:${px(it.h)};background:${it.c};border-radius:${px(it.rad)}"></div>`);
-        else els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};font-family:'${it.font}';font-size:${px(it.size)};font-weight:${it.weight};line-height:${px(it.lh)};letter-spacing:${px(it.ls)};color:${it.c};text-align:${it.align}">${it.html}</div>`);
+        if (it.k === 'rect') els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};height:${px(it.h)};background:${it.c.hex};opacity:${it.c.a};border-radius:${px(it.rad)}"></div>`);
+        else els.push(`<div style="left:${px(it.x)};top:${px(it.y)};width:${px(it.w)};font-family:'${it.font}';font-size:${px(it.size)};font-weight:${it.weight};line-height:${px(it.lh)};letter-spacing:${px(it.ls)};color:${it.c.hex};opacity:${it.c.a};text-align:${it.align}">${it.html}</div>`);
       }
-      return `<section data-document-role="page" data-label="${p.label}" style="width:${p.w}px;height:${p.h}px;background:${p.data.bg}">\n  ${els.join('\n  ')}\n</section>`;
+      return `<section data-document-role="page" data-label="${p.label}" style="width:${p.w}px;height:${p.h}px;background:${p.data.bg.hex}">\n  ${els.join('\n  ')}\n</section>`;
     }).join('\n');
     const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>${tpl.name}</title>
@@ -138,11 +138,13 @@ function extract(sel) {
   const inArt = el => !!el.closest(ART);
   const inPh = el => !!el.closest('.ph');
   const opacityOf = el => { let o = 1; for (let e = el; e && e !== s.parentElement; e = e.parentElement) o *= parseFloat(getComputedStyle(e).opacity); return o; };
+  /* Canva drops the alpha of an rgba() colour, so colours go out as hex plus a separate opacity */
   const rgba = (c, op) => {
     const m = c && c.match(/rgba?\(([^)]+)\)/); if (!m) return null;
     const p = m[1].split(/[\s,\/]+/).filter(Boolean).map(Number);
     const a = (p.length > 3 ? p[3] : 1) * op;
-    return a <= 0.004 ? null : `rgba(${p[0]},${p[1]},${p[2]},${Math.round(a * 1000) / 1000})`;
+    if (a <= 0.004) return null;
+    return { hex: '#' + p.slice(0, 3).map(v => Math.round(v).toString(16).padStart(2, '0')).join(''), a: Math.round(a * 1000) / 1000 };
   };
   const radius = (cs, r) => { const v = cs.borderTopLeftRadius;
     return v.endsWith('%') ? Math.min(r.width, r.height) * parseFloat(v) / 100 : parseFloat(v) || 0; };
@@ -170,7 +172,7 @@ function extract(sel) {
         const c = getComputedStyle(ch), pc = getComputedStyle(node);
         if (c.display !== 'inline') continue;
         const st = [];
-        if (c.color !== pc.color) st.push('color:' + rgba(c.color, opacityOf(ch)));
+        if (c.color !== pc.color) st.push('color:' + rgba(c.color, opacityOf(ch)).hex);
         if (c.fontWeight !== pc.fontWeight) st.push('font-weight:' + c.fontWeight);
         if (c.fontSize !== pc.fontSize) st.push('font-size:' + c.fontSize);
         if (c.fontFamily !== pc.fontFamily) st.push(`font-family:'${c.fontFamily.split(',')[0].replace(/["']/g, '').trim()}'`);
@@ -211,15 +213,19 @@ function extract(sel) {
         const align = { start: 'left', left: 'left', center: 'center', right: 'right', end: 'right', '-webkit-center': 'center' }[cs.textAlign] || 'left';
         /* a little slack so a slightly wider font metric in Canva doesn't wrap a line early */
         let x = r.left + pl - S.left, w = r.width - pl - pr;
+        const runs = [];
+        for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent.trim()) { const rg = document.createRange(); rg.selectNodeContents(n); runs.push(rg.getBoundingClientRect()); }
+        if (runs.length && align === 'left') { const tl = Math.min(...runs.map(b => b.left)) - S.left; if (tl > x + 1) { w -= tl - x; x = tl; } }
         const slack = Math.max(6, w * 0.04);
         if (align === 'left') w += slack; else if (align === 'right') { x -= slack; w += slack; } else { x -= slack / 2; w += slack; }
         const size = parseFloat(cs.fontSize);
         const html = ser(el, op).replace(/\s*<br>\s*/g, '<br>').trim();
+        let lh = cs.lineHeight === 'normal' ? size * 1.2 : parseFloat(cs.lineHeight), y = r.top + pt - S.top;
+        if (lh < size) { y -= (size - lh) / 2; lh = size; }
         if (html) items.push({
-          k: 'text', x, y: r.top + pt - S.top, w, html,
+          k: 'text', x, y, w, html, lh,
           font: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim(),
           size, weight: cs.fontWeight,
-          lh: cs.lineHeight === 'normal' ? size * 1.2 : parseFloat(cs.lineHeight),
           ls: cs.letterSpacing === 'normal' ? 0 : parseFloat(cs.letterSpacing),
           c: rgba(cs.color, op), align,
         });
@@ -228,5 +234,5 @@ function extract(sel) {
     for (const ch of el.children) walk(ch);
   };
   walk(s);
-  return { items, photos, bg: getComputedStyle(s).backgroundColor };
+  return { items, photos, bg: rgba(getComputedStyle(s).backgroundColor, 1) };
 }
