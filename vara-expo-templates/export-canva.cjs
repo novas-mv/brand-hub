@@ -223,7 +223,13 @@ function extract(sel) {
         /* Canva's metrics differ slightly: a single line gets room to grow and is kept on one line;
            a paragraph gets none, so columns keep their gutters */
         const lhPx = cs.lineHeight === 'normal' ? parseFloat(cs.fontSize) * 1.2 : parseFloat(cs.lineHeight);
-        const single = (r.height - pt - parseFloat(cs.paddingBottom) - parseFloat(cs.borderBottomWidth)) < lhPx * 1.5;
+        /* "single" also covers text broken only by <br> (a stacked wordmark): every line is deliberate */
+        const lineTops = new Set();
+        for (const n of el.querySelectorAll('*')) if (getComputedStyle(n).display === 'inline') for (const q of n.getClientRects()) lineTops.add(Math.round(q.top));
+        for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent.trim()) { const rg = document.createRange(); rg.selectNodeContents(n); for (const q of rg.getClientRects()) lineTops.add(Math.round(q.top)); }
+        const brs = el.querySelectorAll('br').length;
+        const single = (r.height - pt - parseFloat(cs.paddingBottom) - parseFloat(cs.borderBottomWidth)) < lhPx * 1.5
+          || (brs > 0 && lineTops.size <= brs + 1);
         const slack = single ? Math.max(20, w * 0.25) : 0;
         if (align === 'left') w += slack; else if (align === 'right') { x -= slack; w += slack; } else { x -= slack / 2; w += slack; }
         const size = parseFloat(cs.fontSize);
